@@ -61,7 +61,8 @@
 		<!-- svelte-maplibre使うとよさそう -->
 		<div class="h-96 w-full bg-gray-600 text-center text-white">地図placeholder</div>
 
-		<button class="mt-4 rounded bg-teal-500 px-4 py-2 text-white">回答する</button>
+		<button class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600">回答する</button
+		>
 	</section>
 </main>
 
