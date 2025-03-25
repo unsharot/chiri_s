@@ -1,3 +1,3 @@
-<h1>地理クイズ</h1>
-
-<p>MIERUNEインターンシップ、2025年3月</p>
+<svelte:head>
+	<title>地理クイズ - unsharot</title>
+</svelte:head>
