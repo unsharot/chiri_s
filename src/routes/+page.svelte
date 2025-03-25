@@ -10,17 +10,17 @@
 	<title>地理クイズ - unsharot</title>
 </svelte:head>
 
-<header class="bg-teal-500 p-4 text-center text-white font-serif">
+<header class="bg-teal-500 p-10 text-center text-black font-serif text-[5vw] pt-30">
 	<h1>地理クイズ</h1>
 </header>
 
-<main class="mx-auto flex min-h-dvh max-w-4xl flex-col gap-12 bg-amber-100 p-8">
+<main class="mx-auto flex min-h-dvh max-w-4xl flex-col gap-4 bg-white p-8">
 	<section class="rounded-lg bg-amber-300 px-4 py-8 font-serif">
 		<H2 text="問題" />
-		<p>太郎君は衛星データのラベルを紛失してしまいました。衛星データから、これらのデータはどの地点のものか特定してください。</p>
+		<p>太郎君は衛星データのラベルを紛失してしまいました。以下の衛星データの資料から、これらのデータはどの地点でとられたものか特定してください。(配点100点)</p>
 	</section>
 
-	<section class="flex flex-col gap-6 rounded-lg bg-amber-300 px-4 py-8 font-serif">
+	<section class="flex flex-col gap-4 rounded-lg bg-amber-300 px-4 py-8 font-serif">
 		<H2 text="資料" />
 		<div class="grid grid-cols-3 gap-6">
 			<DataTile />
@@ -34,7 +34,7 @@
 	</section>
 
 	<section class="rounded-lg bg-blue-200 p-4">
-		<H2 text="回答" />
+		<H2 text="解答" />
 		<!-- TODO: ここに回答用の地図が入る -->
 		<!-- svelte-maplibre使うとよさそう -->
 		<div class="h-96 w-full bg-gray-600 text-center text-white">地図placeholder</div>
@@ -45,5 +45,5 @@
 </main>
 
 <footer class="bg-sky-500 p-4 text-center text-white">
-	<h1>フッター</h1>
+	<h1>資料はJAXA Earth APIを利用して作成したものです</h1>
 </footer>
