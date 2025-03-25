@@ -1,4 +1,5 @@
 <script lang="ts">
+	import DataTile from './dataTile.svelte';
 	import H2 from './H2.svelte';
 
 	// ここにTypeScriptを書く
@@ -22,36 +23,13 @@
 	<section class="flex flex-col gap-6 rounded-lg bg-amber-300 px-4 py-8 font-serif">
 		<H2 text="資料" />
 		<div class="grid grid-cols-3 gap-6">
-			<!-- ↓こういうのをコンポーネントへ切り出すといいよね -->
-			<div class="flex flex-col items-center justify-center gap-3 rounded bg-teal-500 p-4">
-				<div class="h-24 w-24 bg-gray-600 text-center text-white">タイル画像placeholder</div>
-				<div class="text-sm">情報テキスト</div>
-			</div>
+			<DataTile />
+			<DataTile />
+			<DataTile />
+			<DataTile />
+			<DataTile />
+			<DataTile />
 
-			<div class="flex flex-col items-center justify-center gap-3 rounded bg-teal-500 p-4">
-				<div class="h-24 w-24 bg-gray-600 text-center text-white">タイル画像placeholder</div>
-				<div class="text-sm">情報テキスト</div>
-			</div>
-
-			<div class="flex flex-col items-center justify-center gap-3 rounded bg-teal-500 p-4">
-				<div class="h-24 w-24 bg-gray-600 text-center text-white">タイル画像placeholder</div>
-				<div class="text-sm">情報テキスト</div>
-			</div>
-
-			<div class="flex flex-col items-center justify-center gap-3 rounded bg-teal-500 p-4">
-				<div class="h-24 w-24 bg-gray-600 text-center text-white">タイル画像placeholder</div>
-				<div class="text-sm">情報テキスト</div>
-			</div>
-
-			<div class="flex flex-col items-center justify-center gap-3 rounded bg-teal-500 p-4">
-				<div class="h-24 w-24 bg-gray-600 text-center text-white">タイル画像placeholder</div>
-				<div class="text-sm">情報テキスト</div>
-			</div>
-
-			<div class="flex flex-col items-center justify-center gap-3 rounded bg-teal-500 p-4">
-				<div class="h-24 w-24 bg-gray-600 text-center text-white">タイル画像placeholder</div>
-				<div class="text-sm">情報テキスト</div>
-			</div>
 		</div>
 	</section>
 
