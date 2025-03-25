@@ -10,11 +10,11 @@
 	<title>地理クイズ - unsharot</title>
 </svelte:head>
 
-<header class="p-10 text-center text-black font-serif text-[5vw] pt-30">
+<header class="bg-yellow-50 p-1 text-center text-black font-serif text-[5vw] pt-30">
 	<h1>地理クイズ</h1>
 </header>
 
-<main class="mx-auto flex min-h-dvh max-w-4xl flex-col gap-4 bg-white p-8">
+<main class="mx-auto flex min-h-dvh max-w-4xl flex-col gap-4 bg-yellow-50 p-8">
 	<section class="rounded-lg px-4 py-8 font-serif">
 		<H2 text="問題" />
 		<p>太郎君は衛星データのラベルを紛失してしまいました。以下の衛星データの資料から、これらのデータはどの地点でとられたものか特定してください。(配点100点)</p>
