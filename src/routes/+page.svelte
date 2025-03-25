@@ -15,12 +15,12 @@
 
 <main class="mx-auto flex min-h-dvh max-w-4xl flex-col gap-12 bg-amber-100 p-8">
 	<section class="rounded-lg bg-amber-300 px-4 py-8">
-		<H2 text={'問題'} />
+		<H2 text="問題" />
 		<p>問題文</p>
 	</section>
 
 	<section class="flex flex-col gap-6 rounded-lg bg-amber-300 px-4 py-8">
-		<H2 text={'手がかり'} />
+		<H2 text="手がかり" />
 		<div class="grid grid-cols-3 gap-6">
 			<!-- ↓こういうのをコンポーネントへ切り出すといいよね -->
 			<div class="flex flex-col items-center justify-center gap-3 rounded bg-teal-500 p-4">
