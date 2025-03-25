@@ -1,5 +1,5 @@
 <script lang="ts">
-	import DataTile from './dataTile.svelte';
+	import DataTile from './DataTile.svelte';
 	import H2 from './H2.svelte';
 
 	// ここにTypeScriptを書く
@@ -10,7 +10,7 @@
 	<title>地理クイズ - unsharot</title>
 </svelte:head>
 
-<header class="bg-yellow-50 p-1 text-center text-black font-serif text-[5vw] pt-30">
+<header class="bg-yellow-50 p-1 text-center text-black font-serif text-5xl pt-15">
 	<h1>地理クイズ</h1>
 </header>
 
