@@ -9,18 +9,18 @@
 	<title>地理クイズ - unsharot</title>
 </svelte:head>
 
-<header class="bg-teal-500 p-4 text-center text-white">
-	<h1>ヘッダー</h1>
+<header class="bg-teal-500 p-4 text-center text-white font-serif">
+	<h1>地理クイズ</h1>
 </header>
 
 <main class="mx-auto flex min-h-dvh max-w-4xl flex-col gap-12 bg-amber-100 p-8">
-	<section class="rounded-lg bg-amber-300 px-4 py-8">
+	<section class="rounded-lg bg-amber-300 px-4 py-8 font-serif">
 		<H2 text="問題" />
-		<p>問題文</p>
+		<p>太郎君は衛星データのラベルを紛失してしまいました。衛星データから、これらのデータはどの地点のものか特定してください。</p>
 	</section>
 
-	<section class="flex flex-col gap-6 rounded-lg bg-amber-300 px-4 py-8">
-		<H2 text="手がかり" />
+	<section class="flex flex-col gap-6 rounded-lg bg-amber-300 px-4 py-8 font-serif">
+		<H2 text="資料" />
 		<div class="grid grid-cols-3 gap-6">
 			<!-- ↓こういうのをコンポーネントへ切り出すといいよね -->
 			<div class="flex flex-col items-center justify-center gap-3 rounded bg-teal-500 p-4">
@@ -66,6 +66,6 @@
 	</section>
 </main>
 
-<header class="bg-sky-500 p-4 text-center text-white">
+<footer class="bg-sky-500 p-4 text-center text-white">
 	<h1>フッター</h1>
-</header>
+</footer>
