@@ -10,19 +10,19 @@
 </svelte:head>
 
 <main class="mx-auto flex min-h-dvh max-w-4xl flex-col gap-4 bg-yellow-50 p-8">
-	<section class="bg-yellow-50 p-1 pt-15 text-center font-serif text-5xl text-black">
+	<section class="bg-yellow-50 p-1 pt-15 text-center text-5xl text-black">
 		<h1>地理クイズ</h1>
 	</section>
 
-	<section class="rounded-lg px-4 py-8 font-serif">
-		<h2 class="font-serif text-2xl font-bold">問題</h2>
+	<section class="rounded-lg px-4 py-8">
+		<h2 class="text-2xl font-bold">問題</h2>
 		<p>
 			太郎君は衛星データのラベルを紛失してしまいました。以下の衛星データの資料から、これらのデータはどの地点でとられたものか特定してください。(配点100点)
 		</p>
 	</section>
 
-	<section class="flex flex-col gap-4 rounded-lg px-4 py-8 font-serif">
-		<h2 class="font-serif text-2xl font-bold">資料</h2>
+	<section class="flex flex-col gap-4 rounded-lg px-4 py-8">
+		<h2 class="text-2xl font-bold">資料</h2>
 		<div class="grid grid-cols-3 gap-6">
 			<DataTile />
 			<DataTile />
@@ -34,7 +34,7 @@
 	</section>
 
 	<section class="rounded-lgp-4">
-		<h2 class="font-serif text-2xl font-bold">解答</h2>
+		<h2 class="text-2xl font-bold">解答</h2>
 		<!-- TODO: ここに回答用の地図が入る -->
 		<!-- svelte-maplibre使うとよさそう -->
 		<div class="h-96 w-full bg-gray-600 text-center text-white">地図placeholder</div>
@@ -44,6 +44,6 @@
 	</section>
 </main>
 
-<footer class="bg-sky-500 p-1 text-center font-serif text-sm text-white">
+<footer class="bg-sky-500 p-1 text-center text-sm text-white">
 	<h1>資料はJAXA Earth APIを利用して作成したものです</h1>
 </footer>
