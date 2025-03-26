@@ -10,11 +10,11 @@
 	<title>地理クイズ - unsharot</title>
 </svelte:head>
 
-<header class="bg-yellow-50 p-1 pt-15 text-center font-serif text-5xl text-black">
-	<h1>地理クイズ</h1>
-</header>
-
 <main class="mx-auto flex min-h-dvh max-w-4xl flex-col gap-4 bg-yellow-50 p-8">
+	<section class="bg-yellow-50 p-1 pt-15 text-center font-serif text-5xl text-black">
+		<h1>地理クイズ</h1>
+	</section>
+
 	<section class="rounded-lg px-4 py-8 font-serif">
 		<H2 text="問題" />
 		<p>
