@@ -1,5 +1,6 @@
 <script lang="ts">
 	import DataTile from './DataTile.svelte';
+	import { MapLibre } from 'svelte-maplibre-gl';
 
 	// ここにTypeScriptを書く
 </script>
@@ -35,9 +36,12 @@
 
 	<section class="rounded-lgp-4">
 		<h2 class="text-2xl font-bold">解答</h2>
-		<!-- TODO: ここに回答用の地図が入る -->
-		<!-- svelte-maplibre使うとよさそう -->
-		<div class="h-96 w-full bg-gray-600 text-center text-white">地図placeholder</div>
+		<div class="h-96 w-full bg-gray-600">
+			<MapLibre
+				class="h-[400px]"
+				style="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
+			/>
+		</div>
 
 		<button class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600">回答する</button
 		>
