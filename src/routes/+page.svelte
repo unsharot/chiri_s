@@ -1,6 +1,5 @@
 <script lang="ts">
 	import DataTile from './DataTile.svelte';
-	import H2 from './H2.svelte';
 
 	// ここにTypeScriptを書く
 </script>
@@ -16,14 +15,14 @@
 	</section>
 
 	<section class="rounded-lg px-4 py-8 font-serif">
-		<H2 text="問題" />
+		<h2 class="font-serif text-2xl font-bold">問題</h2>
 		<p>
 			太郎君は衛星データのラベルを紛失してしまいました。以下の衛星データの資料から、これらのデータはどの地点でとられたものか特定してください。(配点100点)
 		</p>
 	</section>
 
 	<section class="flex flex-col gap-4 rounded-lg px-4 py-8 font-serif">
-		<H2 text="資料" />
+		<h2 class="font-serif text-2xl font-bold">資料</h2>
 		<div class="grid grid-cols-3 gap-6">
 			<DataTile />
 			<DataTile />
@@ -35,7 +34,7 @@
 	</section>
 
 	<section class="rounded-lgp-4">
-		<H2 text="解答" />
+		<h2 class="font-serif text-2xl font-bold">解答</h2>
 		<!-- TODO: ここに回答用の地図が入る -->
 		<!-- svelte-maplibre使うとよさそう -->
 		<div class="h-96 w-full bg-gray-600 text-center text-white">地図placeholder</div>
