@@ -45,7 +45,7 @@
 		<div class="h-96 w-full bg-gray-600">
 			<MapLibre
 				class="h-[400px]"
-				style="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
+				style="https://tile.openstreetmap.jp/styles/openmaptiles/style.json"
 				onclick={(e) => {
 					player_x = e.lngLat.lng;
 					player_y = e.lngLat.lat;
