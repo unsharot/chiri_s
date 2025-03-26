@@ -6,10 +6,10 @@
 	);
 	let band = $state('DSM');
 
-	let west = $state(-180);
-	let south = $state(-90);
-	let east = $state(180);
-	let north = $state(90);
+	let west = $state(122);
+	let south = $state(24);
+	let east = $state(153);
+	let north = $state(45);
 	let bbox = $derived([west, south, east, north]);
 
 	let width = $state(480);
