@@ -54,6 +54,7 @@
 				}}
 			>
 				<Marker lnglat={[ans_x, ans_y]}></Marker>
+				<Marker color="red" lnglat={[player_x, player_y]}></Marker>
 			</MapLibre>
 		</div>
 
