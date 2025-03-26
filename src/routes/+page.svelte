@@ -1,6 +1,7 @@
 <script lang="ts">
 	import DataTile from './DataTile.svelte';
 	import { MapLibre } from 'svelte-maplibre-gl';
+	import { getJaxaImage } from '$lib';
 
 	// ここにTypeScriptを書く
 </script>
