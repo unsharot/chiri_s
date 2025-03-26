@@ -1,19 +1,16 @@
 <script lang="ts">
-	// import { LngLat } from 'maplibre-gl';
 	import DataTile from './DataTile.svelte';
-	import { BackgroundLayer, MapLibre, Marker } from 'svelte-maplibre-gl';
+	import { MapLibre, Marker } from 'svelte-maplibre-gl';
 
+	// 答えの座標の計算
 	let ans_x = Math.random() * 360 - 180;
 	let ans_y = Math.random() * 180 - 90;
 
 	// プレイヤーの答え
 	let player_x = $state(0);
 	let player_y = $state(0);
-
-	// ここにTypeScriptを書く
 </script>
 
-<!-- HTMLのhead要素はsvelte:headタグで書く -->
 <svelte:head>
 	<title>地理クイズ - unsharot</title>
 </svelte:head>
