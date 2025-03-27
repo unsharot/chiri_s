@@ -55,7 +55,14 @@
 		}
 	]);
 
-	const BBOX_SETTING = [122, 24, 153, 45];
+	const hintBoxSize = 20;
+
+	const BBOX_SETTING = [
+		ansPoint.lng - hintBoxSize,
+		ansPoint.lat - hintBoxSize,
+		ansPoint.lng + hintBoxSize,
+		ansPoint.lat + hintBoxSize
+	];
 	const WIDTH_SETTING = 480;
 	const HEIGHT_SETTING = 480;
 
