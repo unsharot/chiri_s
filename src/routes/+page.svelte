@@ -1,7 +1,7 @@
 <script lang="ts">
-	import DataTile from './DataTile.svelte';
 	import { MapLibre, Marker } from 'svelte-maplibre-gl';
 	import * as turf from '@turf/turf';
+  import DataTile from './DataTile.svelte';
 
 	// 答えの座標の計算
 	let ans_x = Math.random() * 360 - 180;
