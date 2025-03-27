@@ -51,9 +51,25 @@
 		});
 	}
 
-	onMount(async () => {
+	onMount(() => {
+		// 初期化処理を実行
 		resetQuiz();
+
+		// キーボードイベントリスナーを追加
+		window.addEventListener('keydown', handleKeyDown);
+
+		// コンポーネントがアンマウントされたときにイベントリスナーを削除
+		return () => {
+			window.removeEventListener('keydown', handleKeyDown);
+		};
 	});
+
+	function handleKeyDown(event: KeyboardEvent) {
+		// Enterキーが押されたときに、quizModeがresultなら、resetQuiz()を呼び出す
+		if (event.key === 'Enter' && quizMode === 'result') {
+			resetQuiz();
+		}
+	}
 
 	function checkAnswer() {
 		quizMode = 'result';
@@ -142,7 +158,8 @@
 						<div class="bg-red-500">不正解</div>{/if}
 					<button
 						onclick={() => resetQuiz()}
-						class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600">もう一回</button
+						class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600"
+						>もう一回 [enter]</button
 					>
 				{/if}
 
