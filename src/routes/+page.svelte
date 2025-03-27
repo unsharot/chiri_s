@@ -14,7 +14,7 @@
 
 	let markerCount = 4;
 	let points: Point[] = $state([]);
-	let ansPoint: Point = getRandomPoint();
+	let ansPoint: Point = $state(getRandomPoint());
 
 	// プレイヤーの答え
 	let selectedPoint: Point = $state(getRandomPoint());
