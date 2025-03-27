@@ -85,7 +85,7 @@
 	// 正誤処理
 
 	let correct = $state(false);
-	let quizMode = $state('playing');
+	let quizMode: 'playing' | 'result' = $state('playing');
 
 	let resultText = $derived(correct ? '正解' : '不正解');
 
