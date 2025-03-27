@@ -1,4 +1,5 @@
 import * as je from './jaxa.earth.esm.js';
+import * as turf from '@turf/turf';
 
 // https://data.earth.jaxa.jp/api/javascript/v1.2.3/docs/global.html#ColorMapObject
 type ColorMapObject = {
@@ -58,5 +59,28 @@ type HintItem = {
 	imgDataURL: string;
 };
 
-export { getJaxaImage };
-export type { HintItem };
+type Point = {
+	lng: number;
+	lat: number;
+};
+
+function randomPoint() {
+	const lng = Math.random() * 360 - 180;
+	const lat = Math.random() * 170 - 85;
+	return { lng, lat };
+}
+
+function calcDistance(p1: Point, p2: Point) {
+	return turf.distance(turf.point([p1.lng, p1.lat]), turf.point([p2.lng, p2.lat]));
+}
+
+function samePoint(p1: Point, p2: Point) {
+	if (p1.lng == p2.lng && p1.lat == p2.lat) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+export { getJaxaImage, randomPoint, calcDistance, samePoint };
+export type { HintItem, Point };

@@ -1,23 +1,18 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { MapLibre, Marker } from 'svelte-maplibre-gl';
-	import * as turf from '@turf/turf';
-	import { getJaxaImage, type HintItem } from '$lib';
+	import {
+		getJaxaImage,
+		randomPoint,
+		samePoint,
+		calcDistance,
+		type HintItem,
+		type Point
+	} from '$lib';
 	import HintCard from './HintCard.svelte';
 
 	// 答えの座標の計算
 	let ansPoint = randomPoint();
-
-	type Point = {
-		lng: number;
-		lat: number;
-	};
-
-	function randomPoint() {
-		const lng = Math.random() * 360 - 180;
-		const lat = Math.random() * 170 - 85;
-		return { lng, lat };
-	}
 
 	// 選択肢
 	let markerCount = 4;
@@ -28,18 +23,6 @@
 
 	// プレイヤーの答え
 	let selectedPoint: Point = $state(randomPoint());
-
-	function calcDistance(p1: Point, p2: Point) {
-		return turf.distance(turf.point([p1.lng, p1.lat]), turf.point([p2.lng, p2.lat]));
-	}
-
-	function samePoint(p1: Point, p2: Point) {
-		if (p1.lng == p2.lng && p1.lat == p2.lat) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 
 	///////////////////////////////////////////////////////
 
