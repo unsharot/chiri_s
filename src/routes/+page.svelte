@@ -6,6 +6,7 @@
 		getRandomPoint,
 		isSamePoint,
 		calcDistance,
+		initHintItems,
 		type HintItem,
 		type Point
 	} from '$lib';
@@ -18,32 +19,7 @@
 
 	// 手掛かりカード（JAXA Earth APIから取得した画像）
 
-	let hintItems: HintItem[] = $state([
-		{
-			name: '標高',
-			api: {
-				collection:
-					'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.EORC_ALOS.PRISM_AW3D30.v3.2_global/collection.json',
-				band: 'DSM',
-				colors: 'jet',
-				colorMin: 0,
-				colorMax: 10000
-			},
-			imgDataURL: ''
-		},
-		{
-			name: '森林',
-			api: {
-				collection:
-					'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.EORC_ALOS-2.PALSAR-2_FNF.v2.1.0_global_yearly/collection.json',
-				band: 'FNF',
-				colors: 'ndvi',
-				colorMin: 0,
-				colorMax: 10000
-			},
-			imgDataURL: ''
-		}
-	]);
+	let hintItems: HintItem[] = $state(initHintItems);
 
 	const WIDTH_SETTING = 480;
 	const HEIGHT_SETTING = 480;
