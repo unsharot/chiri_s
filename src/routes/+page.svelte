@@ -1,17 +1,28 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { MapLibre, Marker } from 'svelte-maplibre-gl';
-	import * as turf from '@turf/turf';
-	import { getJaxaImage, type HintItem } from '$lib';
+	import {
+		getJaxaImage,
+		getRandomPoint,
+		isSamePoint,
+		calcDistance,
+		type HintItem,
+		type Point
+	} from '$lib';
 	import HintCard from './HintCard.svelte';
 
 	// 答えの座標の計算
-	let ans_x = Math.random() * 360 - 180;
-	let ans_y = Math.random() * 180 - 90;
+	let ansPoint = getRandomPoint();
+
+	// 選択肢
+	let markerCount = 4;
+	let points = [ansPoint];
+	for (let i = 0; i < markerCount - 1; i++) {
+		points.push(getRandomPoint());
+	}
 
 	// プレイヤーの答え
-	let player_x = $state(0);
-	let player_y = $state(0);
+	let selectedPoint: Point = $state(getRandomPoint());
 
 	///////////////////////////////////////////////////////
 
@@ -104,22 +115,44 @@
 			<MapLibre
 				class="h-[400px]"
 				style="https://tile.openstreetmap.jp/styles/openmaptiles/style.json"
-				onclick={(e) => {
-					player_x = e.lngLat.lng;
-					player_y = e.lngLat.lat;
-				}}
 			>
-				<Marker lnglat={[ans_x, ans_y]}></Marker>
-				<Marker color="red" lnglat={[player_x, player_y]}></Marker>
+				{#each points as point}
+					<Marker
+						lnglat={[point.lng, point.lat]}
+						color={isSamePoint(selectedPoint, point) ? 'red' : 'grey'}
+					>
+						{#snippet content()}
+							{#if isSamePoint(selectedPoint, point)}
+								<button
+									class="h-12 w-12 rounded-full bg-red-500 text-2xl text-white hover:bg-teal-600"
+									onclick={() => {
+										selectedPoint = point;
+									}}
+								>
+									2
+								</button>
+							{:else}
+								<button
+									class="h-12 w-12 rounded-full bg-teal-500 text-2xl text-white hover:bg-teal-600"
+									onclick={() => {
+										selectedPoint = point;
+									}}
+								>
+									1
+								</button>
+							{/if}
+						{/snippet}</Marker
+					>
+				{/each}
 			</MapLibre>
 		</div>
 
 		<button class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600">回答する</button
 		>
 
-		<h4>答え: ({ans_x}, {ans_y})</h4>
-		<h4>選択中: ({player_x}, {player_y})</h4>
-		<h4>距離: {turf.distance(turf.point([ans_x, ans_y]), turf.point([player_x, player_y]))}</h4>
+		<h4>答え: ({ansPoint.lng}, {ansPoint.lat})</h4>
+		<h4>選択中: ({selectedPoint.lng}, {selectedPoint.lat})</h4>
+		<h4>距離: {calcDistance(ansPoint, selectedPoint)}</h4>
 	</section>
 </main>
 
