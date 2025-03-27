@@ -93,6 +93,10 @@
 		quizMode = 'result';
 		correct = isSamePoint(selectedPoint, ansPoint);
 	}
+
+	function resetQuiz() {
+		// TODO: リセット処理
+	}
 </script>
 
 <svelte:head>
@@ -176,6 +180,10 @@
 				{resultText}
 			</div>
 		{/if}
+		<button
+			onclick={() => resetQuiz()}
+			class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600">もう一回</button
+		>
 	</section>
 </main>
 
