@@ -113,37 +113,25 @@
 				{#each points as point}
 					<Marker lnglat={[point.lng, point.lat]}>
 						{#snippet content()}
-							{#if isSamePoint(selectedPoint, point)}
-								<button
-									class="h-12 w-12 rounded-full bg-red-500 text-2xl text-white hover:bg-teal-600"
-									onclick={() => {
-										selectedPoint = point;
-									}}
-								>
-									2
-								</button>
-							{:else}
-								<button
-									class="h-12 w-12 rounded-full bg-teal-500 text-2xl text-white hover:bg-teal-600"
-									onclick={() => {
-										selectedPoint = point;
-									}}
-								>
-									1
-								</button>
-							{/if}
+							<button
+								class="h-12 w-12 rounded-full text-2xl text-white hover:bg-teal-600 {isSamePoint(
+									selectedPoint,
+									point
+								)
+									? 'bg-teal-500'
+									: 'bg-gray-500'}"
+								onclick={() => {
+									selectedPoint = point;
+									checkAnswer();
+								}}
+							>
+								X
+							</button>
 						{/snippet}</Marker
 					>
 				{/each}
 			</MapLibre>
 		</div>
-
-		<button
-			class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600"
-			onclick={() => {
-				checkAnswer();
-			}}>答える</button
-		>
 
 		<h4>答え: ({ansPoint.lng}, {ansPoint.lat})</h4>
 		<h4>選択中: ({selectedPoint.lng}, {selectedPoint.lat})</h4>
