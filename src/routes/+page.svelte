@@ -14,11 +14,7 @@
 	let markerCount = 4;
 	let points: Point[] = $state([]);
 	let ansPoint: Point = $state(getRandomPoint());
-
-	// プレイヤーの答え
-	let selectedPoint: Point = $state(getRandomPoint());
-
-	///////////////////////////////////////////////////////
+	let selectedPoint: Point = $state(getRandomPoint()); // プレイヤーの答え
 
 	// 手掛かりカード（JAXA Earth APIから取得した画像）
 
