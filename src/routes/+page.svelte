@@ -82,7 +82,7 @@
 
 	/////////////////////////////////////////////////
 
-	// 正誤処理
+	// 状態遷移の処理
 
 	let correct = $state(false);
 	let quizMode = $state('playing');
@@ -97,6 +97,14 @@
 			correct = false;
 		}
 	}
+
+	$effect(() => {
+		if (quizMode === 'playing') {
+			// resetQuiz();
+			getHintItemImages();
+			console.log('aaa');
+		}
+	});
 </script>
 
 <svelte:head>
@@ -179,6 +187,14 @@
 			<div>
 				{resultText}
 			</div>
+		{/if}
+		{#if quizMode === 'result'}
+			<button
+				class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600"
+				onclick={() => {
+					quizMode = 'playing';
+				}}>次の問題へ</button
+			>
 		{/if}
 	</section>
 </main>
