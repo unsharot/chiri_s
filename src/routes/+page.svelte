@@ -79,6 +79,20 @@
 	onMount(async () => {
 		await getHintItemImages();
 	});
+
+	/////////////////////////////////////////////////
+
+	// 正誤処理
+
+	let correct = $state(false);
+	let quizMode: 'playing' | 'result' = $state('playing');
+
+	let resultText = $derived(correct ? '正解' : '不正解');
+
+	function checkAnswer() {
+		quizMode = 'result';
+		correct = isSamePoint(selectedPoint, ansPoint);
+	}
 </script>
 
 <svelte:head>
@@ -147,12 +161,21 @@
 			</MapLibre>
 		</div>
 
-		<button class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600">回答する</button
+		<button
+			class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600"
+			onclick={() => {
+				checkAnswer();
+			}}>答える</button
 		>
 
 		<h4>答え: ({ansPoint.lng}, {ansPoint.lat})</h4>
 		<h4>選択中: ({selectedPoint.lng}, {selectedPoint.lat})</h4>
 		<h4>距離: {calcDistance(ansPoint, selectedPoint)}</h4>
+		{#if quizMode === 'result'}
+			<div>
+				{resultText}
+			</div>
+		{/if}
 	</section>
 </main>
 
