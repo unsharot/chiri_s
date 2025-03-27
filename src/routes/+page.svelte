@@ -1,6 +1,9 @@
 <script lang="ts">
 	import DataTile from './DataTile.svelte';
-	import { MapLibre } from 'svelte-maplibre-gl';
+	import { MapLibre, Marker } from 'svelte-maplibre-gl';
+
+	let ans_x = Math.random() * 360 - 180;
+	let ans_y = Math.random() * 180 - 90;
 
 	// ここにTypeScriptを書く
 </script>
@@ -40,11 +43,15 @@
 			<MapLibre
 				class="h-[400px]"
 				style="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
-			/>
+			>
+				<Marker lnglat={[ans_x, ans_y]}></Marker>
+			</MapLibre>
 		</div>
 
 		<button class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600">回答する</button
 		>
+
+		<h4>答え: ({ans_x}, {ans_y})</h4>
 	</section>
 </main>
 
