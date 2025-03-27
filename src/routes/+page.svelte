@@ -12,11 +12,11 @@
 	import HintCard from './HintCard.svelte';
 
 	// 答えの座標の計算
-	let ansPoint = getRandomPoint();
+	let ansPoint = $state(getRandomPoint());
 
 	// 選択肢
 	let markerCount = 4;
-	let points = [ansPoint];
+	let points = $derived([ansPoint]);
 	for (let i = 0; i < markerCount - 1; i++) {
 		points.push(getRandomPoint());
 	}
@@ -57,12 +57,12 @@
 
 	const hintBoxSize = 20;
 
-	const BBOX_SETTING = [
+	let BBOX_SETTING = $derived([
 		ansPoint.lng - hintBoxSize,
 		ansPoint.lat - hintBoxSize,
 		ansPoint.lng + hintBoxSize,
 		ansPoint.lat + hintBoxSize
-	];
+	]);
 	const WIDTH_SETTING = 480;
 	const HEIGHT_SETTING = 480;
 
@@ -107,11 +107,23 @@
 
 	$effect(() => {
 		if (quizMode === 'playing') {
-			// resetQuiz();
-			getHintItemImages();
+			resetQuiz();
 			console.log('aaa');
 		}
 	});
+
+	function resetQuiz() {
+		// correct, ansPoint, pointsを更新したい
+		// 資料の画像も
+		correct = false;
+		ansPoint = getRandomPoint();
+		points = [ansPoint];
+		for (let i = 0; i < markerCount - 1; i++) {
+			points.push(getRandomPoint());
+		}
+
+		getHintItemImages();
+	}
 </script>
 
 <svelte:head>
