@@ -12,12 +12,14 @@
 	} from '$lib';
 	import HintCard from './HintCard.svelte';
 
+	let quizMode: 'playing' | 'result' = $state('playing');
+	let correct = $state(false);
+	let resultText = $derived(correct ? '正解' : '不正解');
+
 	let markerCount = 4;
 	let points: Point[] = $state([]);
 	let ansPoint: Point = $state(getRandomPoint());
 	let selectedPoint: Point = $state(getRandomPoint()); // プレイヤーの答え
-
-	// 手掛かりカード（JAXA Earth APIから取得した画像）
 
 	let hintItems: HintItem[] = $state(initHintItems);
 
@@ -27,7 +29,6 @@
 	const DELTA_LNG = 10;
 	const DELTA_LAT = 10;
 
-	// 手掛かりカードの画像を取得
 	async function getHintItemImages() {
 		const bbox = [
 			ansPoint.lng - DELTA_LNG,
@@ -55,25 +56,9 @@
 		resetQuiz();
 	});
 
-	/////////////////////////////////////////////////
-
-	// 正誤処理
-
-	let correct = $state(false);
-	let quizMode: 'playing' | 'result' = $state('playing');
-
-	let resultText = $derived(correct ? '正解' : '不正解');
-
 	function checkAnswer() {
 		quizMode = 'result';
 		correct = isSamePoint(selectedPoint, ansPoint);
-	}
-
-	function resetPoints() {
-		points = [ansPoint];
-		for (let i = 0; i < markerCount - 1; i++) {
-			points.push(getRandomPoint());
-		}
 	}
 
 	async function resetQuiz() {
@@ -81,7 +66,10 @@
 		correct = false;
 
 		ansPoint = getRandomPoint();
-		resetPoints();
+		points = [ansPoint];
+		for (let i = 0; i < markerCount - 1; i++) {
+			points.push(getRandomPoint());
+		}
 
 		await getHintItemImages();
 	}
