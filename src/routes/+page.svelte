@@ -124,21 +124,21 @@
 						{#snippet content()}
 							{#if samePoint(selectedPoint, point)}
 								<button
-									class="mt-4 rounded bg-red-500 px-4 py-2 text-white hover:bg-teal-600"
+									class="h-12 w-12 rounded-full bg-red-500 text-2xl text-white hover:bg-teal-600"
 									onclick={() => {
 										selectedPoint = point;
 									}}
 								>
-									a
+									2
 								</button>
 							{:else}
 								<button
-									class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600"
+									class="h-12 w-12 rounded-full bg-teal-500 text-2xl text-white hover:bg-teal-600"
 									onclick={() => {
 										selectedPoint = point;
 									}}
 								>
-									aaa
+									1
 								</button>
 							{/if}
 						{/snippet}</Marker
