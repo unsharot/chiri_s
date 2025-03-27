@@ -14,7 +14,6 @@
 
 	let quizMode: 'playing' | 'result' = $state('playing');
 	let correct = $state(false);
-	let resultText = $derived(correct ? '正解' : '不正解');
 
 	let markerCount = 4;
 	let points: Point[] = $state([]);
@@ -112,10 +111,7 @@
 				zoom={0}
 			>
 				{#each points as point}
-					<Marker
-						lnglat={[point.lng, point.lat]}
-						color={isSamePoint(selectedPoint, point) ? 'red' : 'grey'}
-					>
+					<Marker lnglat={[point.lng, point.lat]}>
 						{#snippet content()}
 							{#if isSamePoint(selectedPoint, point)}
 								<button
@@ -153,9 +149,10 @@
 		<h4>選択中: ({selectedPoint.lng}, {selectedPoint.lat})</h4>
 		<h4>距離: {calcDistance(ansPoint, selectedPoint)}</h4>
 		{#if quizMode === 'result'}
-			<div class="bg-red-500">
-				{resultText}
-			</div>
+			{#if correct}
+				<div class="bg-green-500">正解</div>
+			{:else}
+				<div class="bg-red-500">不正解</div>{/if}
 			<button
 				onclick={() => resetQuiz()}
 				class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600">もう一回</button
