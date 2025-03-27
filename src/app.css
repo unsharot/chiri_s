@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Antique&display=swap');
+
 @import 'tailwindcss';
 
 html {
-    @apply font-serif;
+	font-family: 'Zen Antique', serif;
 }

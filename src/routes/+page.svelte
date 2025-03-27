@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { MapLibre, Marker } from 'svelte-maplibre-gl';
 	import * as turf from '@turf/turf';
-  import DataTile from './DataTile.svelte';
+	import DataTile from './DataTile.svelte';
 
 	// 答えの座標の計算
 	let ans_x = Math.random() * 360 - 180;
@@ -16,8 +16,11 @@
 	<title>地理クイズ - unsharot</title>
 </svelte:head>
 
-<main class="mx-auto flex min-h-dvh max-w-4xl flex-col gap-4 bg-yellow-50 p-8">
-	<section class="bg-yellow-50 p-1 pt-15 text-center text-5xl text-black">
+<main
+	id="paper-background"
+	class="paper-background mx-auto my-12 flex min-h-dvh max-w-4xl flex-col gap-4 p-8 shadow-2xl"
+>
+	<section class="p-1 pt-8 text-center text-5xl">
 		<h1>地理クイズ</h1>
 	</section>
 
@@ -42,7 +45,7 @@
 
 	<section class="rounded-lgp-4">
 		<h2 class="text-2xl font-bold">解答</h2>
-		<div class="h-96 w-full bg-gray-600">
+		<div class="h-96 w-full">
 			<MapLibre
 				class="h-[400px]"
 				style="https://tile.openstreetmap.jp/styles/openmaptiles/style.json"
@@ -65,6 +68,34 @@
 	</section>
 </main>
 
-<footer class="bg-sky-500 p-1 text-center text-sm text-white">
-	<h1>資料はJAXA Earth APIを利用して作成したものです</h1>
+<footer class="bg-gray-500 p-1 text-center text-sm text-white">
+	資料は<a href="https://data.earth.jaxa.jp/ja/" class="underline hover:no-underline"
+		>JAXA Earth API</a
+	>を利用して作成したものです
 </footer>
+
+<style lang="postcss">
+	:global(body) {
+		background-color: #aaa;
+		color: #333;
+	}
+
+	#paper-background {
+		background-color: #fdfdfb;
+		background-image:
+			repeating-linear-gradient(
+				0deg,
+				rgba(0, 0, 0, 0.02) 0px,
+				rgba(0, 0, 0, 0.02) 1px,
+				transparent 1px,
+				transparent 4px
+			),
+			repeating-linear-gradient(
+				90deg,
+				rgba(0, 0, 0, 0.01) 0px,
+				rgba(0, 0, 0, 0.01) 1px,
+				transparent 1px,
+				transparent 4px
+			);
+	}
+</style>
