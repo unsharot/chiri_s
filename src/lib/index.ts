@@ -106,7 +106,31 @@ const initHintItems: HintItem[] = [
 			colorMax: 10000
 		},
 		imgDataURL: ''
-	}
+	},
+	{
+		name: '地表温度',
+		api: {
+			collection:
+				'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.G-Portal_GCOM-C.SGLI_standard.L3-LST.daytime.v3_global_monthly/collection.json',
+			band: 'LST',
+			colors: 'jet',
+			colorMin: 223.1,
+			colorMax: 323.1,
+		},
+		imgDataURL: ''
+	},
+	{
+		name: '海面温度',
+		api: {
+			collection:
+				'https://s3.ap-northeast-1.wasabisys.com/je-pds2/cog/v1/JAXA.G-Portal_GCOM-W.AMSR2_standard.L3-SST.daytime.v4_global_daily/collection.json',
+			band: 'SST',
+			colors: 'jet',
+			colorMin: 0.0,
+			colorMax: 40.0,
+		},
+		imgDataURL: ''
+	},
 ] as const;
 
 export { getJaxaImage, getRandomPoint, calcDistance, isSamePoint, initHintItems };
