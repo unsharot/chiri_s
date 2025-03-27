@@ -10,7 +10,6 @@
 		type Point
 	} from '$lib';
 	import HintCard from './HintCard.svelte';
-	import { get } from 'svelte/store';
 
 	let markerCount = 4;
 	let points: Point[] = $state([]);
