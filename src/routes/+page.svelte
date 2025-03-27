@@ -16,6 +16,7 @@
 	let correct = $state(false);
 
 	let markerCount = 4;
+	let markerLabels = ['ア', 'イ', 'ウ', 'エ'];
 	let points: Point[] = $state([]);
 	let ansPoint: Point = $state(getRandomPoint());
 	let selectedPoint: Point = $state(getRandomPoint()); // プレイヤーの答え
@@ -85,6 +86,8 @@
 		for (let i = 0; i < markerCount - 1; i++) {
 			points.push(getRandomPoint());
 		}
+		// 最初の項目が常に正解、とならないようにシャッフル
+		points = points.sort(() => Math.random() - 0.5);
 
 		await getHintItemImages();
 	}
@@ -117,22 +120,22 @@
 						style="https://tile.openstreetmap.jp/styles/openmaptiles/style.json"
 						zoom={0}
 					>
-						{#each points as point}
+						{#each points as point, idx}
 							<Marker lnglat={[point.lng, point.lat]}>
 								{#snippet content()}
 									<button
-										class="h-12 w-12 rounded-full text-2xl text-white hover:bg-teal-600 {isSamePoint(
+										class="h-12 w-12 border-3 text-2xl text-black hover:bg-black hover:text-white {isSamePoint(
 											selectedPoint,
 											point
 										)
 											? 'bg-teal-500'
-											: 'bg-gray-500'}"
+											: 'bg-white'}"
 										onclick={() => {
 											selectedPoint = point;
 											checkAnswer();
 										}}
 									>
-										X
+										{markerLabels[idx]}
 									</button>
 								{/snippet}</Marker
 							>
