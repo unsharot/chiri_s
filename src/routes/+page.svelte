@@ -8,9 +8,6 @@
 	// 答えの座標の計算
 	let ansPoint = randomPoint();
 
-	// プレイヤーの答え
-	let selectedPoint = $state(randomPoint());
-
 	type Point = {
 		lng: number;
 		lat: number;
@@ -22,15 +19,26 @@
 		return { lng, lat };
 	}
 
-	// 偽のマーカー
+	// 選択肢
 	let markerCount = 4;
-	let fakePoints = [];
+	let points = [ansPoint];
 	for (let i = 0; i < markerCount - 1; i++) {
-		fakePoints.push(randomPoint());
+		points.push(randomPoint());
 	}
+
+	// プレイヤーの答え
+	let selectedPoint: Point = $state(randomPoint());
 
 	function calcDistance(p1: Point, p2: Point) {
 		return turf.distance(turf.point([p1.lng, p1.lat]), turf.point([p2.lng, p2.lat]));
+	}
+
+	function samePoint(p1: Point, p2: Point) {
+		if (p1.lng == p2.lng && p1.lat == p2.lat) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	///////////////////////////////////////////////////////
@@ -124,15 +132,34 @@
 			<MapLibre
 				class="h-[400px]"
 				style="https://tile.openstreetmap.jp/styles/openmaptiles/style.json"
-				onclick={(e) => {
-					selectedPoint.lng = e.lngLat.lng;
-					selectedPoint.lat = e.lngLat.lat;
-				}}
 			>
-				<Marker lnglat={[ansPoint.lng, ansPoint.lat]}></Marker>
-				<Marker color="red" lnglat={[selectedPoint.lng, selectedPoint.lat]}></Marker>
-				{#each fakePoints as point}
-					<Marker lnglat={[point.lng, point.lat]}></Marker>
+				{#each points as point}
+					<Marker
+						lnglat={[point.lng, point.lat]}
+						color={samePoint(selectedPoint, point) ? 'red' : 'grey'}
+					>
+						{#snippet content()}
+							{#if samePoint(selectedPoint, point)}
+								<button
+									class="bg--500 mt-4 rounded px-4 py-2 text-white hover:bg-teal-600"
+									onclick={() => {
+										selectedPoint = point;
+									}}
+								>
+									aaa
+								</button>
+							{:else}
+								<button
+									class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600"
+									onclick={() => {
+										selectedPoint = point;
+									}}
+								>
+									aaa
+								</button>
+							{/if}
+						{/snippet}</Marker
+					>
 				{/each}
 			</MapLibre>
 		</div>
