@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { MapLibre, Marker } from 'svelte-maplibre-gl';
 	import * as turf from '@turf/turf';
-  import DataTile from './DataTile.svelte';
+	import { getJaxaImage } from '$lib';
+	import HintCard from './HintCard.svelte';
 
 	// 答えの座標の計算
 	let ans_x = Math.random() * 360 - 180;
@@ -31,12 +32,12 @@
 	<section class="flex flex-col gap-4 rounded-lg px-4 py-8">
 		<h2 class="text-2xl font-bold">資料</h2>
 		<div class="grid grid-cols-3 gap-6">
-			<DataTile />
-			<DataTile />
-			<DataTile />
-			<DataTile />
-			<DataTile />
-			<DataTile />
+			<HintCard />
+			<HintCard />
+			<HintCard />
+			<HintCard />
+			<HintCard />
+			<HintCard />
 		</div>
 	</section>
 
