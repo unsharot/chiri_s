@@ -11,15 +11,11 @@
 	} from '$lib';
 	import HintCard from './HintCard.svelte';
 
+	let markerCount = 4;
+	let points: Point[] = $state([]);
+
 	// 答えの座標の計算
 	let ansPoint = getRandomPoint();
-
-	// 選択肢
-	let markerCount = 4;
-	let points = [ansPoint];
-	for (let i = 0; i < markerCount - 1; i++) {
-		points.push(getRandomPoint());
-	}
 
 	// プレイヤーの答え
 	let selectedPoint: Point = $state(getRandomPoint());
@@ -77,6 +73,7 @@
 	}
 
 	onMount(async () => {
+		resetQuiz();
 		await getHintItemImages();
 	});
 
@@ -95,7 +92,10 @@
 	}
 
 	function resetQuiz() {
-		// TODO: リセット処理
+		points = [ansPoint];
+		for (let i = 0; i < markerCount - 1; i++) {
+			points.push(getRandomPoint());
+		}
 	}
 </script>
 
@@ -129,10 +129,11 @@
 
 	<section class="rounded-lgp-4">
 		<h2 class="text-2xl font-bold">解答</h2>
-		<div class="h-96 w-full">
+		<div class="h-[600px] w-full">
 			<MapLibre
-				class="h-[400px]"
+				class="h-full"
 				style="https://tile.openstreetmap.jp/styles/openmaptiles/style.json"
+				zoom={0}
 			>
 				{#each points as point}
 					<Marker
