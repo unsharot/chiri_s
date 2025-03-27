@@ -2,13 +2,15 @@
 	import DataTile from './DataTile.svelte';
 	import { MapLibre, Marker } from 'svelte-maplibre-gl';
 
+	// 答えの座標の計算
 	let ans_x = Math.random() * 360 - 180;
 	let ans_y = Math.random() * 180 - 90;
 
-	// ここにTypeScriptを書く
+	// プレイヤーの答え
+	let player_x = $state(0);
+	let player_y = $state(0);
 </script>
 
-<!-- HTMLのhead要素はsvelte:headタグで書く -->
 <svelte:head>
 	<title>地理クイズ - unsharot</title>
 </svelte:head>
@@ -43,8 +45,13 @@
 			<MapLibre
 				class="h-[400px]"
 				style="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
+				onclick={(e) => {
+					player_x = e.lngLat.lng;
+					player_y = e.lngLat.lat;
+				}}
 			>
 				<Marker lnglat={[ans_x, ans_y]}></Marker>
+				<Marker color="red" lnglat={[player_x, player_y]}></Marker>
 			</MapLibre>
 		</div>
 
@@ -52,6 +59,7 @@
 		>
 
 		<h4>答え: ({ans_x}, {ans_y})</h4>
+		<h4>選択中: ({player_x}, {player_y})</h4>
 	</section>
 </main>
 
