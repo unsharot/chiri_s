@@ -1,7 +1,9 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { MapLibre, Marker } from 'svelte-maplibre-gl';
 	import * as turf from '@turf/turf';
-	import DataTile from './DataTile.svelte';
+	import { getJaxaImage, type HintItem } from '$lib';
+	import HintCard from './HintCard.svelte';
 
 	// 答えの座標の計算
 	let ans_x = Math.random() * 360 - 180;
@@ -10,6 +12,62 @@
 	// プレイヤーの答え
 	let player_x = $state(0);
 	let player_y = $state(0);
+
+	///////////////////////////////////////////////////////
+
+	// 手掛かりカード（JAXA Earth APIから取得した画像）
+
+	let hintItems: HintItem[] = $state([
+		{
+			name: '標高',
+			api: {
+				collection:
+					'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.EORC_ALOS.PRISM_AW3D30.v3.2_global/collection.json',
+				band: 'DSM',
+				colors: 'jet',
+				colorMin: 0,
+				colorMax: 10000
+			},
+			imgDataURL: ''
+		},
+		{
+			name: '森林',
+			api: {
+				collection:
+					'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.EORC_ALOS-2.PALSAR-2_FNF.v2.1.0_global_yearly/collection.json',
+				band: 'FNF',
+				colors: 'ndvi',
+				colorMin: 0,
+				colorMax: 10000
+			},
+			imgDataURL: ''
+		}
+	]);
+
+	const BBOX_SETTING = [122, 24, 153, 45];
+	const WIDTH_SETTING = 480;
+	const HEIGHT_SETTING = 480;
+
+	// 手掛かりカードの画像を取得
+	async function getHintItemImages() {
+		const images = await Promise.all(
+			hintItems.map((hintItem) => {
+				const { collection, band, colors, colorMin, colorMax } = hintItem.api;
+				return getJaxaImage(collection, band, BBOX_SETTING, WIDTH_SETTING, HEIGHT_SETTING, {
+					colors,
+					min: colorMin,
+					max: colorMax
+				});
+			})
+		);
+		images.forEach((image, index) => {
+			hintItems[index].imgDataURL = image.getCanvas().toDataURL();
+		});
+	}
+
+	onMount(async () => {
+		await getHintItemImages();
+	});
 </script>
 
 <svelte:head>
@@ -34,12 +92,9 @@
 	<section class="flex flex-col gap-4 rounded-lg px-4 py-8">
 		<h2 class="text-2xl font-bold">資料</h2>
 		<div class="grid grid-cols-3 gap-6">
-			<DataTile />
-			<DataTile />
-			<DataTile />
-			<DataTile />
-			<DataTile />
-			<DataTile />
+			{#each hintItems as hint}
+				<HintCard name={hint.name} imgDataURL={hint.imgDataURL} />
+			{/each}
 		</div>
 	</section>
 

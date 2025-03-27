@@ -46,4 +46,17 @@ async function getJaxaImage(
 	return image;
 }
 
+type HintItem = {
+	name: string;
+	api: {
+		collection: string;
+		band: string;
+		colors: string;
+		colorMin: number;
+		colorMax: number;
+	};
+	imgDataURL: string;
+};
+
 export { getJaxaImage };
+export type { HintItem };
