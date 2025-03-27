@@ -3,8 +3,8 @@
 	import { MapLibre, Marker } from 'svelte-maplibre-gl';
 	import {
 		getJaxaImage,
-		randomPoint,
-		samePoint,
+		getRandomPoint,
+		isSamePoint,
 		calcDistance,
 		type HintItem,
 		type Point
@@ -12,17 +12,17 @@
 	import HintCard from './HintCard.svelte';
 
 	// 答えの座標の計算
-	let ansPoint = randomPoint();
+	let ansPoint = getRandomPoint();
 
 	// 選択肢
 	let markerCount = 4;
 	let points = [ansPoint];
 	for (let i = 0; i < markerCount - 1; i++) {
-		points.push(randomPoint());
+		points.push(getRandomPoint());
 	}
 
 	// プレイヤーの答え
-	let selectedPoint: Point = $state(randomPoint());
+	let selectedPoint: Point = $state(getRandomPoint());
 
 	///////////////////////////////////////////////////////
 
@@ -119,10 +119,10 @@
 				{#each points as point}
 					<Marker
 						lnglat={[point.lng, point.lat]}
-						color={samePoint(selectedPoint, point) ? 'red' : 'grey'}
+						color={isSamePoint(selectedPoint, point) ? 'red' : 'grey'}
 					>
 						{#snippet content()}
-							{#if samePoint(selectedPoint, point)}
+							{#if isSamePoint(selectedPoint, point)}
 								<button
 									class="h-12 w-12 rounded-full bg-red-500 text-2xl text-white hover:bg-teal-600"
 									onclick={() => {
