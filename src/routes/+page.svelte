@@ -1,6 +1,7 @@
 <script lang="ts">
 	import DataTile from './DataTile.svelte';
 	import { MapLibre, Marker } from 'svelte-maplibre-gl';
+	import * as turf from '@turf/turf';
 
 	// 答えの座標の計算
 	let ans_x = Math.random() * 360 - 180;
@@ -44,7 +45,7 @@
 		<div class="h-96 w-full bg-gray-600">
 			<MapLibre
 				class="h-[400px]"
-				style="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
+				style="https://tile.openstreetmap.jp/styles/openmaptiles/style.json"
 				onclick={(e) => {
 					player_x = e.lngLat.lng;
 					player_y = e.lngLat.lat;
@@ -60,6 +61,7 @@
 
 		<h4>答え: ({ans_x}, {ans_y})</h4>
 		<h4>選択中: ({player_x}, {player_y})</h4>
+		<h4>距離: {turf.distance(turf.point([ans_x, ans_y]), turf.point([player_x, player_y]))}</h4>
 	</section>
 </main>
 
