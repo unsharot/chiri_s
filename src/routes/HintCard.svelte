@@ -1,4 +1,8 @@
+<script lang="ts">
+	let { name, imgDataURL } = $props();
+</script>
+
 <div class="flex flex-col items-center justify-center gap-3 rounded bg-yellow-50 p-4">
-	<div class="h-24 w-24 bg-gray-600 text-center text-white">タイル画像placeholder</div>
-	<div class="text-sm">情報テキスト</div>
+	<img class="h-36 w-36 rounded-md border bg-white" src={imgDataURL} alt="{name}のタイル画像" />
+	<div class="font-bold">{name}</div>
 </div>
