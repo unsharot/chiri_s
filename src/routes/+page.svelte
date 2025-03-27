@@ -1,9 +1,17 @@
 <script lang="ts">
-	import DataTile from './DataTile.svelte';
-	import { MapLibre } from 'svelte-maplibre-gl';
+	import { MapLibre, Marker } from 'svelte-maplibre-gl';
+	import * as turf from '@turf/turf';
+  import DataTile from './DataTile.svelte';
+
+	// 答えの座標の計算
+	let ans_x = Math.random() * 360 - 180;
+	let ans_y = Math.random() * 180 - 90;
+
+	// プレイヤーの答え
+	let player_x = $state(0);
+	let player_y = $state(0);
 </script>
 
-<!-- HTMLのhead要素はsvelte:headタグで書く -->
 <svelte:head>
 	<title>地理クイズ - unsharot</title>
 </svelte:head>
@@ -37,12 +45,23 @@
 		<div class="h-96 w-full bg-gray-600">
 			<MapLibre
 				class="h-[400px]"
-				style="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
-			/>
+				style="https://tile.openstreetmap.jp/styles/openmaptiles/style.json"
+				onclick={(e) => {
+					player_x = e.lngLat.lng;
+					player_y = e.lngLat.lat;
+				}}
+			>
+				<Marker lnglat={[ans_x, ans_y]}></Marker>
+				<Marker color="red" lnglat={[player_x, player_y]}></Marker>
+			</MapLibre>
 		</div>
 
 		<button class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600">回答する</button
 		>
+
+		<h4>答え: ({ans_x}, {ans_y})</h4>
+		<h4>選択中: ({player_x}, {player_y})</h4>
+		<h4>距離: {turf.distance(turf.point([ans_x, ans_y]), turf.point([player_x, player_y]))}</h4>
 	</section>
 </main>
 
