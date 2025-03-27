@@ -85,10 +85,12 @@
 	// 正誤処理
 
 	let correct = $state(false);
-	let showAnswer = $state(false);
+	let quizMode = $state('playing');
+
+	let resultText = $derived(correct ? '正解' : '不正解');
 
 	function answer() {
-		showAnswer = true;
+		quizMode = 'result';
 		if (isSamePoint(selectedPoint, ansPoint)) {
 			correct = true;
 		} else {
@@ -173,13 +175,9 @@
 		<h4>答え: ({ansPoint.lng}, {ansPoint.lat})</h4>
 		<h4>選択中: ({selectedPoint.lng}, {selectedPoint.lat})</h4>
 		<h4>距離: {calcDistance(ansPoint, selectedPoint)}</h4>
-		{#if showAnswer}
+		{#if quizMode === 'result'}
 			<div>
-				{#if correct}
-					正解
-				{:else}
-					不正解
-				{/if}
+				{resultText}
 			</div>
 		{/if}
 	</section>
