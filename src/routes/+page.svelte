@@ -73,7 +73,7 @@
 	}
 
 	onMount(async () => {
-		resetQuiz();
+		resetPoints();
 		await getHintItemImages();
 	});
 
@@ -91,7 +91,7 @@
 		correct = isSamePoint(selectedPoint, ansPoint);
 	}
 
-	function resetQuiz() {
+	function resetPoints() {
 		points = [ansPoint];
 		for (let i = 0; i < markerCount - 1; i++) {
 			points.push(getRandomPoint());
@@ -182,7 +182,7 @@
 			</div>
 		{/if}
 		<button
-			onclick={() => resetQuiz()}
+			onclick={() => resetPoints()}
 			class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600">もう一回</button
 		>
 	</section>
