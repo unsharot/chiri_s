@@ -50,16 +50,25 @@
 		}
 	]);
 
-	const BBOX_SETTING = [122, 24, 153, 45];
 	const WIDTH_SETTING = 480;
 	const HEIGHT_SETTING = 480;
 
+	const DELTA_LNG = 10;
+	const DELTA_LAT = 10;
+
 	// 手掛かりカードの画像を取得
 	async function getHintItemImages() {
+		const bbox = [
+			ansPoint.lng - DELTA_LNG,
+			ansPoint.lat - DELTA_LAT,
+			ansPoint.lng + DELTA_LNG,
+			ansPoint.lat + DELTA_LAT
+		];
+
 		const images = await Promise.all(
 			hintItems.map((hintItem) => {
 				const { collection, band, colors, colorMin, colorMax } = hintItem.api;
-				return getJaxaImage(collection, band, BBOX_SETTING, WIDTH_SETTING, HEIGHT_SETTING, {
+				return getJaxaImage(collection, band, bbox, WIDTH_SETTING, HEIGHT_SETTING, {
 					colors,
 					min: colorMin,
 					max: colorMax
