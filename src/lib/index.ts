@@ -47,17 +47,7 @@ async function getJaxaImage(
 	return image;
 }
 
-type HintItem = {
-	name: string;
-	api: {
-		collection: string;
-		band: string;
-		colors: string;
-		colorMin: number;
-		colorMax: number;
-	};
-	imgDataURL: string;
-};
+////////////////////////////////////////
 
 type Point = {
 	lng: number;
@@ -75,8 +65,49 @@ function calcDistance(p1: Point, p2: Point) {
 }
 
 function isSamePoint(p1: Point, p2: Point) {
-	return p1.lng == p2.lng && p1.lat == p2.lat
+	return p1.lng == p2.lng && p1.lat == p2.lat;
 }
 
-export { getJaxaImage, getRandomPoint, calcDistance, isSamePoint };
+/////////////////////////////////////////
+
+type HintItem = {
+	name: string;
+	api: {
+		collection: string;
+		band: string;
+		colors: string;
+		colorMin: number;
+		colorMax: number;
+	};
+	imgDataURL: string;
+};
+
+const initHintItems: HintItem[] = [
+	{
+		name: '標高',
+		api: {
+			collection:
+				'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.EORC_ALOS.PRISM_AW3D30.v3.2_global/collection.json',
+			band: 'DSM',
+			colors: 'jet',
+			colorMin: 0,
+			colorMax: 10000
+		},
+		imgDataURL: ''
+	},
+	{
+		name: '森林',
+		api: {
+			collection:
+				'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.EORC_ALOS-2.PALSAR-2_FNF.v2.1.0_global_yearly/collection.json',
+			band: 'FNF',
+			colors: 'ndvi',
+			colorMin: 0,
+			colorMax: 10000
+		},
+		imgDataURL: ''
+	}
+] as const;
+
+export { getJaxaImage, getRandomPoint, calcDistance, isSamePoint, initHintItems };
 export type { HintItem, Point };
