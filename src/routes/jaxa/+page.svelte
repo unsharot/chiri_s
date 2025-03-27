@@ -35,6 +35,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>JAXA Earth API - デモ</title>
+</svelte:head>
+
 <main class="mx-auto max-w-3xl p-8">
 	<div class="flex w-full items-center justify-between gap-3">
 		<h1 class="text-xl font-bold">JAXA Earth API</h1>
