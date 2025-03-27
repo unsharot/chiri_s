@@ -75,11 +75,7 @@ function calcDistance(p1: Point, p2: Point) {
 }
 
 function isSamePoint(p1: Point, p2: Point) {
-	if (p1.lng == p2.lng && p1.lat == p2.lat) {
-		return true;
-	} else {
-		return false;
-	}
+	return p1.lng == p2.lng && p1.lat == p2.lat
 }
 
 export { getJaxaImage, getRandomPoint, calcDistance, isSamePoint };
