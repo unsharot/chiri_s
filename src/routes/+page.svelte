@@ -89,13 +89,9 @@
 
 	let resultText = $derived(correct ? '正解' : '不正解');
 
-	function answer() {
+	function checkAnswer() {
 		quizMode = 'result';
-		if (isSamePoint(selectedPoint, ansPoint)) {
-			correct = true;
-		} else {
-			correct = false;
-		}
+		correct = isSamePoint(selectedPoint, ansPoint);
 	}
 </script>
 
@@ -168,7 +164,7 @@
 		<button
 			class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600"
 			onclick={() => {
-				answer();
+				checkAnswer();
 			}}>答える</button
 		>
 
