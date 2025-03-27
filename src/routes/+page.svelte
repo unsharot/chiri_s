@@ -10,12 +10,11 @@
 		type Point
 	} from '$lib';
 	import HintCard from './HintCard.svelte';
+	import { get } from 'svelte/store';
 
 	let markerCount = 4;
 	let points: Point[] = $state([]);
-
-	// 答えの座標の計算
-	let ansPoint = getRandomPoint();
+	let ansPoint: Point = getRandomPoint();
 
 	// プレイヤーの答え
 	let selectedPoint: Point = $state(getRandomPoint());
@@ -73,8 +72,7 @@
 	}
 
 	onMount(async () => {
-		resetPoints();
-		await getHintItemImages();
+		resetQuiz();
 	});
 
 	/////////////////////////////////////////////////
@@ -96,6 +94,16 @@
 		for (let i = 0; i < markerCount - 1; i++) {
 			points.push(getRandomPoint());
 		}
+	}
+
+	async function resetQuiz() {
+		quizMode = 'playing';
+		correct = false;
+
+		ansPoint = getRandomPoint();
+		resetPoints();
+
+		await getHintItemImages();
 	}
 </script>
 
@@ -177,14 +185,14 @@
 		<h4>選択中: ({selectedPoint.lng}, {selectedPoint.lat})</h4>
 		<h4>距離: {calcDistance(ansPoint, selectedPoint)}</h4>
 		{#if quizMode === 'result'}
-			<div>
+			<div class="bg-red-500">
 				{resultText}
 			</div>
+			<button
+				onclick={() => resetQuiz()}
+				class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600">もう一回</button
+			>
 		{/if}
-		<button
-			onclick={() => resetPoints()}
-			class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600">もう一回</button
-		>
 	</section>
 </main>
 
