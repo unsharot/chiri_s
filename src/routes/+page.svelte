@@ -13,6 +13,24 @@
 	let player_x = $state(0);
 	let player_y = $state(0);
 
+	type Point = {
+		lng: number;
+		lat: number;
+	};
+
+	function randomPoint() {
+		const lng = Math.random() * 360 - 180;
+		const lat = Math.random() * 170 - 85;
+		return { lng, lat };
+	}
+
+	// 偽のマーカー
+	let markerCount = 4;
+	let fakePoints = [];
+	for (let i = 0; i < markerCount - 1; i++) {
+		fakePoints.push(randomPoint());
+	}
+
 	///////////////////////////////////////////////////////
 
 	// 手掛かりカード（JAXA Earth APIから取得した画像）
@@ -111,6 +129,9 @@
 			>
 				<Marker lnglat={[ans_x, ans_y]}></Marker>
 				<Marker color="red" lnglat={[player_x, player_y]}></Marker>
+				{#each fakePoints as point}
+					<Marker lnglat={[point.lng, point.lat]}></Marker>
+				{/each}
 			</MapLibre>
 		</div>
 
