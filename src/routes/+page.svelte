@@ -78,82 +78,83 @@
 	<title>地理クイズ - unsharot</title>
 </svelte:head>
 
-<main
-	id="paper-background"
-	class="paper-background mx-auto my-12 flex min-h-dvh max-w-4xl flex-col gap-4 p-8 shadow-2xl"
->
-	<section class="p-1 pt-8 text-center text-5xl">
-		<h1>地理クイズ</h1>
-	</section>
+<div class="grid h-screen place-items-center">
+	<main
+		id="paper-background"
+		class="paper-background mx-6 my-6 flex flex-col gap-4 px-8 py-8 shadow-2xl"
+	>
+		<div class="flex gap-12">
+			<section class="basis-1/2">
+				<div class="flex items-end gap-3">
+					<h1 class="text-3xl font-bold">地理S</h1>
+					<a class="underline hover:no-underline" href="https://github.com/unsharot">unsharot</a>
+				</div>
 
-	<section class="rounded-lg px-4 py-8">
-		<h2 class="text-2xl font-bold">問題</h2>
-		<p>
-			太郎君は衛星データのラベルを紛失してしまいました。以下の衛星データの資料から、これらのデータはどの地点でとられたものか特定してください。(配点100点)
-		</p>
-	</section>
+				<p class="my-6 text-base tracking-tighter">
+					<span class="mr-1 font-bold">問1.</span>
+					太郎君は衛星データのラベルを紛失してしまいました。以下の衛星データの資料から、これらのデータはどの地点でとられたものか特定してください。(配点100点)
+				</p>
 
-	<section class="flex flex-col gap-4 rounded-lg px-4 py-8">
-		<h2 class="text-2xl font-bold">資料</h2>
-		<div class="grid grid-cols-3 gap-6">
-			{#each hintItems as hint}
-				<HintCard name={hint.name} imgDataURL={hint.imgDataURL} />
-			{/each}
-		</div>
-	</section>
-
-	<section class="rounded-lgp-4">
-		<h2 class="text-2xl font-bold">解答</h2>
-		<div class="h-[600px] w-full">
-			<MapLibre
-				class="h-full"
-				style="https://tile.openstreetmap.jp/styles/openmaptiles/style.json"
-				zoom={0}
-			>
-				{#each points as point}
-					<Marker lnglat={[point.lng, point.lat]}>
-						{#snippet content()}
-							<button
-								class="h-12 w-12 rounded-full text-2xl text-white hover:bg-teal-600 {isSamePoint(
-									selectedPoint,
-									point
-								)
-									? 'bg-teal-500'
-									: 'bg-gray-500'}"
-								onclick={() => {
-									selectedPoint = point;
-									checkAnswer();
-								}}
-							>
-								X
-							</button>
-						{/snippet}</Marker
+				<div class="h-[70vh] w-full">
+					<MapLibre
+						class="h-full"
+						style="https://tile.openstreetmap.jp/styles/openmaptiles/style.json"
+						zoom={0}
 					>
-				{/each}
-			</MapLibre>
+						{#each points as point}
+							<Marker lnglat={[point.lng, point.lat]}>
+								{#snippet content()}
+									<button
+										class="h-12 w-12 rounded-full text-2xl text-white hover:bg-teal-600 {isSamePoint(
+											selectedPoint,
+											point
+										)
+											? 'bg-teal-500'
+											: 'bg-gray-500'}"
+										onclick={() => {
+											selectedPoint = point;
+											checkAnswer();
+										}}
+									>
+										X
+									</button>
+								{/snippet}</Marker
+							>
+						{/each}
+					</MapLibre>
+				</div>
+			</section>
+
+			<section class="relative basis-1/2">
+				<section class="flex flex-col gap-4 rounded-lg">
+					<h2 class="text-2xl font-bold">資料</h2>
+					<div class="grid grid-cols-3 gap-6">
+						{#each hintItems as hint}
+							<HintCard name={hint.name} imgDataURL={hint.imgDataURL} />
+						{/each}
+					</div>
+				</section>
+
+				{#if quizMode === 'result'}
+					{#if correct}
+						<div class="bg-green-500">正解</div>
+					{:else}
+						<div class="bg-red-500">不正解</div>{/if}
+					<button
+						onclick={() => resetQuiz()}
+						class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600">もう一回</button
+					>
+				{/if}
+
+				<div class="absolute bottom-0 w-full p-1 text-center text-sm">
+					資料は<a href="https://data.earth.jaxa.jp/ja/" class="underline hover:no-underline"
+						>JAXA Earth API</a
+					>を利用して作成したものです
+				</div>
+			</section>
 		</div>
-
-		<h4>答え: ({ansPoint.lng}, {ansPoint.lat})</h4>
-		<h4>選択中: ({selectedPoint.lng}, {selectedPoint.lat})</h4>
-		<h4>距離: {calcDistance(ansPoint, selectedPoint)}</h4>
-		{#if quizMode === 'result'}
-			{#if correct}
-				<div class="bg-green-500">正解</div>
-			{:else}
-				<div class="bg-red-500">不正解</div>{/if}
-			<button
-				onclick={() => resetQuiz()}
-				class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600">もう一回</button
-			>
-		{/if}
-	</section>
-</main>
-
-<footer class="bg-gray-500 p-1 text-center text-sm text-white">
-	資料は<a href="https://data.earth.jaxa.jp/ja/" class="underline hover:no-underline"
-		>JAXA Earth API</a
-	>を利用して作成したものです
-</footer>
+	</main>
+</div>
 
 <style lang="postcss">
 	:global(body) {
