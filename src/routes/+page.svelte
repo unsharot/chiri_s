@@ -95,7 +95,7 @@
 </script>
 
 <svelte:head>
-	<title>地理クイズ - unsharot</title>
+	<title>地理S - unsharot</title>
 </svelte:head>
 
 <div class="grid h-screen place-items-center">
@@ -106,12 +106,12 @@
 		<div class="flex gap-12">
 			<section class="basis-1/2">
 				<div class="flex items-end gap-3">
-					<h1 class="text-3xl font-bold">地理S</h1>
+					<h1 class="text-3xl font-bold tracking-[.5em]">地理S</h1>
 					<a class="underline hover:no-underline" href="https://github.com/unsharot">unsharot</a>
 				</div>
 
 				<div class="my-6 text-base tracking-tighter">
-					<span class="mr-1 font-bold">問1.</span>
+					<span class="mr-1 font-bold tracking-[.5em]">第1問</span>
 					タロウさんは、衛星データの資料のラベルを誤って他のラベルと混ぜてしまい、どのラベルが付いていたか分からなくなってしまった。資料のラベルとして最も適切なものを地図上の
 					<button class="border-1 bg-white text-xl text-black">ア</button>
 					~<button class="border-1 bg-white text-xl text-black">エ</button>のうちから一つ選べ。(配点
@@ -150,7 +150,7 @@
 
 			<section class="relative basis-1/2">
 				<section class="flex flex-col gap-4 rounded-lg">
-					<h2 class="text-2xl font-bold">資料</h2>
+					<h2 class="text-2xl font-bold tracking-[.5em]">資料</h2>
 					<div class="grid grid-cols-3 gap-6">
 						{#each hintItems as hint}
 							<HintCard name={hint.name} imgDataURL={hint.imgDataURL} />
