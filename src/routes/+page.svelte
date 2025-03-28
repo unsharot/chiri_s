@@ -166,8 +166,8 @@
 						<div class="rounded bg-red-500 text-center text-4xl">不正解</div>{/if}
 					<button
 						onclick={() => resetQuiz()}
-						class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600"
-						>もう一回 Enter</button
+						class="absolute right-0 bottom-10 mt-4 rounded border-1 bg-white px-4 py-2 align-middle text-black hover:bg-teal-600"
+						>もう一回 (Enter)</button
 					>
 				{/if}
 
