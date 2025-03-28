@@ -110,10 +110,13 @@
 					<a class="underline hover:no-underline" href="https://github.com/unsharot">unsharot</a>
 				</div>
 
-				<p class="my-6 text-base tracking-tighter">
+				<div class="my-6 text-base tracking-tighter">
 					<span class="mr-1 font-bold">問1.</span>
-					太郎君は衛星データのラベルを紛失してしまいました。以下の衛星データの資料から、これらのデータはどの地点でとられたものか特定してください。(配点100点)
-				</p>
+					タロウさんは、衛星データの資料のラベルを誤って他のラベルと混ぜてしまい、どのラベルが付いていたか分からなくなってしまった。資料のラベルとして最も適切なものを地図上の
+					<button class="border-1 bg-white text-xl text-black">ア</button>
+					~<button class="border-1 bg-white text-xl text-black">エ</button>のうちから一つ選べ。(配点
+					100)
+				</div>
 
 				<div class="h-[70vh] w-full">
 					<MapLibre
