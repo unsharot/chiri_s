@@ -11,6 +11,7 @@
 		type Point
 	} from '$lib';
 	import HintCard from './HintCard.svelte';
+	import { Confetti } from 'svelte-confetti';
 
 	let quizMode: 'playing' | 'result' = $state('playing');
 	let correct = $state(false);
@@ -157,6 +158,7 @@
 				{#if quizMode === 'result'}
 					{#if correct}
 						<div class="bg-green-500">正解</div>
+						<Confetti />
 					{:else}
 						<div class="bg-red-500">不正解</div>{/if}
 					<button
