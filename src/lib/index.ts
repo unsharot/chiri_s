@@ -131,6 +131,54 @@ const initHintItems: HintItem[] = [
 		},
 		imgDataURL: ''
 	},
+	{
+		name: '降水量',
+		api: {
+			collection:
+				'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.EORC_GSMaP_standard.Gauge.00Z-23Z.v6_monthly/collection.json',
+			band: 'PRECIP',
+			colors: 'jet',
+			colorMin: 0.1,
+			colorMax: 10.0,
+		},
+		imgDataURL: ''
+	},
+	{
+		name: '植生指数',
+		api: {
+			collection:
+				'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.G-Portal_GCOM-C.SGLI_standard.L3-NDVI.daytime.v3_global_monthly/collection.json',
+			band: 'NDVI',
+			colors: 'ndvi',
+			colorMin: 0.0,
+			colorMax: 1.0,
+		},
+		imgDataURL: ''
+	},
+	{
+		name: '土壌水分量',
+		api: {
+			collection:
+				'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.G-Portal_GCOM-W.AMSR2_standard.L3-SMC.daytime.v3_global_monthly/collection.json',
+			band: 'SMC',
+			colors: 'jet',
+			colorMin: 0.0,
+			colorMax: 30.0,
+		},
+		imgDataURL: ''
+	},
+	{
+		name: '海氷密接度',
+		api: {
+			collection:
+				'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.JASMES_GCOM-W.AMSR2_ic0.v201_north_daily/collection.json',
+			band: 'IC0',
+			colors: 'jet',
+			colorMin: 0.0,
+			colorMax: 100.0,
+		},
+		imgDataURL: ''
+	},
 ] as const;
 
 export { getJaxaImage, getRandomPoint, calcDistance, isSamePoint, initHintItems };
