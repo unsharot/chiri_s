@@ -160,14 +160,14 @@
 
 				{#if quizMode === 'result'}
 					{#if correct}
-						<div class="bg-green-500">正解</div>
+						<div class="rounded bg-green-500 text-center text-4xl">正解</div>
 						<Confetti />
 					{:else}
-						<div class="bg-red-500">不正解</div>{/if}
+						<div class="rounded bg-red-500 text-center text-4xl">不正解</div>{/if}
 					<button
 						onclick={() => resetQuiz()}
 						class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600"
-						>もう一回 [enter]</button
+						>もう一回 Enter</button
 					>
 				{/if}
 
