@@ -103,8 +103,8 @@
 		id="paper-background"
 		class="paper-background mx-6 my-6 flex flex-col gap-4 px-8 py-8 shadow-2xl"
 	>
-		<div class="flex gap-12">
-			<section class="basis-1/2">
+		<div class="flex flex-col gap-6 lg:flex-row lg:gap-12">
+			<section id="left-page" class="w-full lg:basis-1/2">
 				<div class="flex items-end gap-3">
 					<h1 class="text-3xl font-bold tracking-[.5em]">地理S</h1>
 					<a class="underline hover:no-underline" href="https://github.com/unsharot">unsharot</a>
@@ -118,7 +118,7 @@
 					100)
 				</div>
 
-				<div class="h-[70vh] w-full">
+				<div class="h-[30vh] w-full lg:h-[70vh]">
 					<MapLibre
 						class="h-full"
 						style="https://tile.openstreetmap.jp/styles/openmaptiles/style.json"
@@ -148,7 +148,7 @@
 				</div>
 			</section>
 
-			<section class="relative basis-1/2">
+			<section id="right-page" class="relative w-full lg:basis-1/2">
 				<section class="flex flex-col gap-4 rounded-lg">
 					<h2 class="text-2xl font-bold tracking-[.5em]">資料</h2>
 					<div class="grid grid-cols-3 gap-6">
