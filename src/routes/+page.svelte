@@ -11,6 +11,7 @@
 		type Point
 	} from '$lib';
 	import HintCard from './HintCard.svelte';
+	import { Confetti } from 'svelte-confetti';
 
 	let quizMode: 'playing' | 'result' = $state('playing');
 	let correct = $state(false);
@@ -94,7 +95,7 @@
 </script>
 
 <svelte:head>
-	<title>地理クイズ - unsharot</title>
+	<title>地理S - unsharot</title>
 </svelte:head>
 
 <div class="grid h-screen place-items-center">
@@ -105,14 +106,17 @@
 		<div class="flex gap-12">
 			<section class="basis-1/2">
 				<div class="flex items-end gap-3">
-					<h1 class="text-3xl font-bold">地理S</h1>
+					<h1 class="text-3xl font-bold tracking-[.5em]">地理S</h1>
 					<a class="underline hover:no-underline" href="https://github.com/unsharot">unsharot</a>
 				</div>
 
-				<p class="my-6 text-base tracking-tighter">
-					<span class="mr-1 font-bold">問1.</span>
-					太郎君は衛星データのラベルを紛失してしまいました。以下の衛星データの資料から、これらのデータはどの地点でとられたものか特定してください。(配点100点)
-				</p>
+				<div class="my-6 text-base tracking-tighter">
+					<span class="mr-1 font-bold tracking-[.5em]">第1問</span>
+					タロウさんは、衛星データの資料のラベルを誤って他のラベルと混ぜてしまい、どのラベルが付いていたか分からなくなってしまった。資料のラベルとして最も適切なものを地図上の
+					<button class="border-1 bg-white text-xl text-black">ア</button>
+					~<button class="border-1 bg-white text-xl text-black">エ</button>のうちから一つ選べ。(配点
+					100)
+				</div>
 
 				<div class="h-[70vh] w-full">
 					<MapLibre
@@ -146,7 +150,7 @@
 
 			<section class="relative basis-1/2">
 				<section class="flex flex-col gap-4 rounded-lg">
-					<h2 class="text-2xl font-bold">資料</h2>
+					<h2 class="text-2xl font-bold tracking-[.5em]">資料</h2>
 					<div class="grid grid-cols-3 gap-6">
 						{#each hintItems as hint}
 							<HintCard name={hint.name} imgDataURL={hint.imgDataURL} />
@@ -156,13 +160,14 @@
 
 				{#if quizMode === 'result'}
 					{#if correct}
-						<div class="bg-green-500">正解</div>
+						<div class="rounded bg-green-500 text-center text-4xl">正解</div>
+						<Confetti />
 					{:else}
-						<div class="bg-red-500">不正解</div>{/if}
+						<div class="rounded bg-red-500 text-center text-4xl">不正解</div>{/if}
 					<button
 						onclick={() => resetQuiz()}
-						class="mt-4 rounded bg-teal-500 px-4 py-2 text-white hover:bg-teal-600"
-						>もう一回 [enter]</button
+						class="absolute right-0 bottom-10 mt-4 rounded border-1 bg-white px-4 py-2 align-middle text-black hover:bg-teal-600"
+						>もう一回 (Enter)</button
 					>
 				{/if}
 
