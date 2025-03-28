@@ -92,10 +92,30 @@
 
 		await getHintItemImages();
 	}
+
+	const pageTitle = '地理S - unsharot';
+	const description =
+		'衛星データをもとに、データのラベルを当てるゲームです。MIERUNEのインターンの成果物として作成しました。';
 </script>
 
 <svelte:head>
-	<title>地理S - unsharot</title>
+	<title>{pageTitle}</title>
+	<meta name="description" content={description} />
+
+	<!-- OGP基本設定 -->
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={description} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://chiri-s.vercel.app/" />
+	<meta property="og:image" content="https://chiri-s.vercel.app/social.png" />
+	<meta property="og:site_name" content="地理S" />
+	<meta property="og:locale" content="ja_JP" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={pageTitle} />
+	<meta name="twitter:description" content={description} />
+	<meta name="twitter:image" content="https://chiri-s.vercel.app/social.png" />
 </svelte:head>
 
 <div class="grid h-screen place-items-center">
