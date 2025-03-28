@@ -95,7 +95,7 @@
 
 	const pageTitle = '地理S - unsharot';
 	const description =
-		'衛星データをもとに、データのラベルを当てるゲームです。MIERUNEのインターンの成果物として作成しました。';
+		'JAXAの衛星データをもとに、データのラベルを当てるゲームです。MIERUNEのインターンの成果物として作成しました。';
 </script>
 
 <svelte:head>
