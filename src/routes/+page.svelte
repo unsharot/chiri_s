@@ -161,7 +161,7 @@
 				{#if quizMode === 'result'}
 					{#if correct}
 						<div class="rounded bg-green-500 text-center text-4xl">正解</div>
-						<Confetti />
+						<Confetti amount={100} x={[-2, 2]} y={[-2, 2]} />
 					{:else}
 						<div class="rounded bg-red-500 text-center text-4xl">不正解</div>{/if}
 					<button

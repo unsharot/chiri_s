@@ -84,7 +84,7 @@ type HintItem = {
 
 const initHintItems: HintItem[] = [
 	{
-		name: '標高',
+		name: '標高(数値表層モデル)',
 		api: {
 			collection:
 				'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.EORC_ALOS.PRISM_AW3D30.v3.2_global/collection.json',
@@ -96,7 +96,7 @@ const initHintItems: HintItem[] = [
 		imgDataURL: ''
 	},
 	{
-		name: '森林',
+		name: '森林非森林',
 		api: {
 			collection:
 				'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.EORC_ALOS-2.PALSAR-2_FNF.v2.1.0_global_yearly/collection.json',
@@ -108,7 +108,7 @@ const initHintItems: HintItem[] = [
 		imgDataURL: ''
 	},
 	{
-		name: '地表温度',
+		name: '地表面温度',
 		api: {
 			collection:
 				'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.G-Portal_GCOM-C.SGLI_standard.L3-LST.daytime.v3_global_monthly/collection.json',
@@ -120,7 +120,7 @@ const initHintItems: HintItem[] = [
 		imgDataURL: ''
 	},
 	{
-		name: '海面温度',
+		name: '海面水温',
 		api: {
 			collection:
 				'https://s3.ap-northeast-1.wasabisys.com/je-pds2/cog/v1/JAXA.G-Portal_GCOM-W.AMSR2_standard.L3-SST.daytime.v4_global_daily/collection.json',
@@ -128,6 +128,54 @@ const initHintItems: HintItem[] = [
 			colors: 'jet',
 			colorMin: 0.0,
 			colorMax: 40.0,
+		},
+		imgDataURL: ''
+	},
+	{
+		name: '降水量',
+		api: {
+			collection:
+				'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.EORC_GSMaP_standard.Gauge.00Z-23Z.v6_monthly/collection.json',
+			band: 'PRECIP',
+			colors: 'jet',
+			colorMin: 0.1,
+			colorMax: 10.0,
+		},
+		imgDataURL: ''
+	},
+	{
+		name: '植生指数',
+		api: {
+			collection:
+				'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.G-Portal_GCOM-C.SGLI_standard.L3-NDVI.daytime.v3_global_monthly/collection.json',
+			band: 'NDVI',
+			colors: 'ndvi',
+			colorMin: 0.0,
+			colorMax: 1.0,
+		},
+		imgDataURL: ''
+	},
+	{
+		name: '土壌水分量',
+		api: {
+			collection:
+				'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.G-Portal_GCOM-W.AMSR2_standard.L3-SMC.daytime.v3_global_monthly/collection.json',
+			band: 'SMC',
+			colors: 'jet',
+			colorMin: 0.0,
+			colorMax: 30.0,
+		},
+		imgDataURL: ''
+	},
+	{
+		name: '海氷密接度',
+		api: {
+			collection:
+				'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.JASMES_GCOM-W.AMSR2_ic0.v201_north_daily/collection.json',
+			band: 'IC0',
+			colors: 'jet',
+			colorMin: 0.0,
+			colorMax: 100.0,
 		},
 		imgDataURL: ''
 	},
