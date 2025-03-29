@@ -104,10 +104,17 @@
 		class="paper-background mx-6 my-6 flex flex-col gap-4 px-8 py-8 shadow-2xl"
 	>
 		<div class="flex flex-col gap-6 lg:flex-row lg:gap-12">
-			<section id="left-page" class="w-full lg:basis-1/2">
+			<section id="left-page" class="relative w-full lg:basis-1/2">
 				<div class="flex items-end gap-3">
 					<h1 class="text-3xl font-bold tracking-[.5em]">地理S</h1>
 					<a class="underline hover:no-underline" href="https://github.com/unsharot">unsharot</a>
+					{#if quizMode === 'result'}
+						{#if correct}
+							<div class="absolute right-0 rounded bg-green-500 text-center text-4xl">正解</div>
+						{:else}
+							<div class="absolute right-0 rounded bg-red-500 text-center text-4xl">不正解</div>
+						{/if}
+					{/if}
 				</div>
 
 				<div class="my-6 text-base tracking-tighter">
@@ -145,6 +152,13 @@
 							>
 						{/each}
 					</MapLibre>
+					{#if quizMode === 'result'}
+						{#if correct}
+							<div class="fixed bottom-[50%] left-[50%]">
+								<Confetti amount={100} x={[-2, 2]} y={[-2, 2]} />
+							</div>
+						{/if}
+					{/if}
 				</div>
 			</section>
 
@@ -159,16 +173,9 @@
 				</section>
 
 				{#if quizMode === 'result'}
-					{#if correct}
-						<div class="rounded bg-green-500 text-center text-4xl">正解</div>
-						<div class="fixed">
-							<Confetti amount={100} x={[-2, 2]} y={[-2, 2]} />
-						</div>
-					{:else}
-						<div class="rounded bg-red-500 text-center text-4xl">不正解</div>{/if}
 					<button
 						onclick={() => resetQuiz()}
-						class="absolute right-0 bottom-10 mt-4 rounded border-1 bg-white px-4 py-2 align-middle text-black hover:bg-teal-600"
+						class="absolute right-0 bottom-0 mt-4 rounded border-1 bg-white px-4 py-2 align-middle text-black hover:bg-teal-600"
 						>もう一回 (Enter)</button
 					>
 				{/if}
