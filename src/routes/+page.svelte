@@ -177,6 +177,12 @@
 					</div>
 				</section>
 
+				<div class="absolute bottom-0 w-full p-1 text-center text-sm">
+					資料は<a href="https://data.earth.jaxa.jp/ja/" class="underline hover:no-underline"
+						>JAXA Earth API</a
+					>を利用して作成したものです
+				</div>
+
 				{#if quizMode === 'result'}
 					<button
 						onclick={() => resetQuiz()}
@@ -184,12 +190,6 @@
 						>もう一回 (Enter)</button
 					>
 				{/if}
-
-				<div class="absolute bottom-0 w-full p-1 text-center text-sm">
-					資料は<a href="https://data.earth.jaxa.jp/ja/" class="underline hover:no-underline"
-						>JAXA Earth API</a
-					>を利用して作成したものです
-				</div>
 			</section>
 		</div>
 	</main>
