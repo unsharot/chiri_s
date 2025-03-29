@@ -129,7 +129,8 @@
 					<MapLibre
 						class="h-full"
 						style="https://tile.openstreetmap.jp/styles/openmaptiles/style.json"
-						zoom={0}
+						zoom={-1}
+						center={[180, 0]}
 					>
 						{#each points as point, idx}
 							<Marker lnglat={[point.lng, point.lat]}>
