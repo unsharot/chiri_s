@@ -118,7 +118,7 @@
 					100)
 				</div>
 
-				<div class="h-[30vh] w-full lg:h-[70vh]">
+				<div class="h-[90vh] w-full lg:h-[70vh]">
 					<MapLibre
 						class="h-full"
 						style="https://tile.openstreetmap.jp/styles/openmaptiles/style.json"
