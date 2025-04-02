@@ -7,6 +7,7 @@
 		isSamePoint,
 		calcDistance,
 		initHintItems,
+		markerLabels,
 		type HintItem,
 		type Point
 	} from '$lib';
@@ -19,8 +20,7 @@
 	let quizMode: 'playing' | 'result' = $state('playing');
 	let correct = $state(false);
 
-	let markerCount = 4;
-	let markerLabels = ['ア', 'イ', 'ウ', 'エ'];
+	let markerCount = $state(4);
 	let points: Point[] = $state([]);
 	let ansPoint: Point = $state(getRandomPoint());
 	let selectedPoint: Point = $state(getRandomPoint()); // プレイヤーの答え
@@ -119,8 +119,8 @@
 		</form>
 
 		<div>
-			<input type="range" min="1" max="11" />
-			<label for="volume">マーカー数</label>
+			<input type="range" min="1" max="11" bind:value={markerCount} />
+			<label for="volume">マーカー数: {markerCount}</label>
 		</div>
 		<div>
 			<input type="range" min="0" max="11" />
