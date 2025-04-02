@@ -13,7 +13,7 @@
 <dialog
 	bind:this={dialog}
 	onclick={(e) => closeIfOutside(e)}
-	class="absolute h-[100vh] w-100 shadow-gray-500"
+	class="absolute z-3 h-auto w-100 rounded shadow-gray-800"
 >
 	<slot />
 </dialog>

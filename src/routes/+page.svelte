@@ -101,18 +101,20 @@
 	<title>地理S - unsharot</title>
 </svelte:head>
 
-<div class="absolute h-[100vh] w-full">
-	<button
-		class="option"
-		onclick={() => {
-			dialog.showModal();
-		}}><div class="rounded p-0.5 text-center text-2xl hover:bg-gray-500">☰</div></button
-	>
+<button
+	class="absolute right-1 z-2 p-1"
+	onclick={() => {
+		dialog.showModal();
+	}}
+>
+	<div class="z-2 rounded p-0.5 text-center text-2xl hover:bg-gray-400">☰</div>
+</button>
 
+<div class="relative w-full">
 	<Dialog bind:dialog>
 		<form method="dialog">
-			<button class="option" onclick={() => {}}>
-				<div class="absolute right-5 rounded p-0.5 text-center text-2xl hover:bg-gray-500">×</div>
+			<button onclick={() => {}}>
+				<div class="absolute right-5 rounded p-0.5 text-center text-2xl hover:bg-gray-200">×</div>
 			</button>
 		</form>
 
