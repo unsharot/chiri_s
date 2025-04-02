@@ -12,6 +12,9 @@
 	} from '$lib';
 	import HintCard from './HintCard.svelte';
 	import { Confetti } from 'svelte-confetti';
+	import Dialog from './Dialog.svelte';
+
+	let dialog: any = $state();
 
 	let quizMode: 'playing' | 'result' = $state('playing');
 	let correct = $state(false);
@@ -97,6 +100,36 @@
 <svelte:head>
 	<title>地理S - unsharot</title>
 </svelte:head>
+
+<div class="absolute h-[100vh] w-full">
+	<button
+		class="option"
+		onclick={() => {
+			dialog.showModal();
+		}}><div class="rounded p-0.5 text-center text-2xl hover:bg-gray-500">☰</div></button
+	>
+
+	<Dialog bind:dialog>
+		<form method="dialog">
+			<button class="option" onclick={() => {}}>
+				<div class="absolute right-5 rounded p-0.5 text-center text-2xl hover:bg-gray-500">×</div>
+			</button>
+		</form>
+
+		<div>
+			<input type="range" min="1" max="11" />
+			<label for="volume">マーカー数</label>
+		</div>
+		<div>
+			<input type="range" min="0" max="11" />
+			<label for="volume">経度</label>
+		</div>
+		<div>
+			<input type="range" min="0" max="11" />
+			<label for="volume">緯度</label>
+		</div>
+	</Dialog>
+</div>
 
 <div class="grid h-screen place-items-center">
 	<main
