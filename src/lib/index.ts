@@ -181,5 +181,58 @@ const initHintItems: HintItem[] = [
 	},
 ] as const;
 
-export { getJaxaImage, getRandomPoint, calcDistance, isSamePoint, initHintItems };
+/////////////////
+
+const markerLabels = [
+	'ア',
+	'イ',
+	'ウ',
+	'エ',
+	'オ',
+	'カ',
+	'キ',
+	'ク',
+	'ケ',
+	'コ',
+	'サ',
+	'シ',
+	'ス',
+	'セ',
+	'ソ',
+	'タ',
+	'チ',
+	'ツ',
+	'テ',
+	'ト',
+	'ナ',
+	'ニ',
+	'ヌ',
+	'ネ',
+	'ノ',
+	'ハ',
+	'ヒ',
+	'フ',
+	'ヘ',
+	'ホ',
+	'マ',
+	'ミ',
+	'ム',
+	'メ',
+	'モ',
+	'ヤ',
+	'ユ',
+	'ヨ',
+	'ラ',
+	'リ',
+	'ル',
+	'レ',
+	'ロ',
+	'ワ',
+	'ヲ',
+	'ン'
+] as const;
+
+
+
+export { getJaxaImage, getRandomPoint, calcDistance, isSamePoint, initHintItems, markerLabels };
 export type { HintItem, Point };
