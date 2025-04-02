@@ -30,15 +30,15 @@
 	const WIDTH_SETTING = 480;
 	const HEIGHT_SETTING = 480;
 
-	const DELTA_LNG = 10;
-	const DELTA_LAT = 10;
+	let deltaLng = $state(10);
+	let deltaLat = $state(10);
 
 	async function getHintItemImages() {
 		const bbox = [
-			ansPoint.lng - DELTA_LNG,
-			ansPoint.lat - DELTA_LAT,
-			ansPoint.lng + DELTA_LNG,
-			ansPoint.lat + DELTA_LAT
+			ansPoint.lng - deltaLng,
+			ansPoint.lat - deltaLat,
+			ansPoint.lng + deltaLng,
+			ansPoint.lat + deltaLat
 		];
 
 		const images = await Promise.all(
@@ -123,12 +123,12 @@
 			<label for="volume">マーカー数: {markerCount}</label>
 		</div>
 		<div>
-			<input type="range" min="0" max="11" />
-			<label for="volume">経度</label>
+			<input type="range" min="1" max="11" bind:value={deltaLng} />
+			<label for="volume">経度の幅: {deltaLng}</label>
 		</div>
 		<div>
-			<input type="range" min="0" max="11" />
-			<label for="volume">緯度</label>
+			<input type="range" min="1" max="11" bind:value={deltaLat} />
+			<label for="volume">緯度の幅: {deltaLat}</label>
 		</div>
 	</Dialog>
 </div>
