@@ -2,7 +2,11 @@
 
 JAXAの衛星データをもとに、データのラベルを当てるゲームです。
 
-MIERUNEのインターンの成果物として作成しました。
+[MIERUNEのインターン](https://note.com/mierune/n/ne8a1980605cc)の成果物として作成しました。
+
+https://chiri-s.vercel.app/
+
+上のリンクからプレイできます。
 
 ## 使用したツール
 
