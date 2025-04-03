@@ -13,7 +13,6 @@
 	} from '$lib';
 	import HintCard from './HintCard.svelte';
 	import { Confetti } from 'svelte-confetti';
-	import Dialog from './Dialog.svelte';
 
 	let dialog: any = $state();
 
@@ -102,36 +101,43 @@
 </svelte:head>
 
 <button
-	class="absolute right-1 z-2 p-1"
-	onclick={() => {
-		dialog.showModal();
-	}}
+	class="absolute right-1 z-5 rounded p-0.5 hover:bg-gray-400 hover:opacity-50"
+	onclick={() => dialog.showModal()}
 >
-	<div class="z-2 rounded p-0.5 text-center text-2xl hover:bg-gray-400">☰</div>
+	<div class="text-center text-2xl select-none">☰</div>
 </button>
 
-<div class="relative w-full">
-	<Dialog bind:dialog>
-		<form method="dialog">
-			<button onclick={() => {}}>
-				<div class="absolute right-5 rounded p-0.5 text-center text-2xl hover:bg-gray-200">×</div>
-			</button>
-		</form>
+<dialog
+	bind:this={dialog}
+	id="menu"
+	class="fixed z-3 min-h-screen w-100 rounded p-3 shadow-gray-800"
+>
+	<button
+		class="absolute right-2 m-1 rounded p-0.5 text-center text-2xl hover:bg-gray-200"
+		onclick={() => dialog.close()}
+	>
+		<div class="text-center text-2xl select-none">×</div>
+	</button>
 
-		<div>
-			<input type="range" min="1" max={markerLabels.length} bind:value={markerCount} />
-			<label for="volume">マーカー数: {markerCount}</label>
-		</div>
-		<div>
-			<input type="range" min="1" max="11" bind:value={deltaLng} />
-			<label for="volume">経度の幅: {deltaLng}</label>
-		</div>
-		<div>
-			<input type="range" min="1" max="11" bind:value={deltaLat} />
-			<label for="volume">緯度の幅: {deltaLat}</label>
-		</div>
-	</Dialog>
-</div>
+	<div class="m-2 select-none">
+		<input
+			id="marker-count"
+			type="range"
+			min="1"
+			max={markerLabels.length}
+			bind:value={markerCount}
+		/>
+		<label for="marker-count">マーカー数: {markerCount}</label>
+	</div>
+	<div class="m-2 select-none">
+		<input id="delta-lng" type="range" min="1" max="11" bind:value={deltaLng} />
+		<label for="delta-lng">経度の幅: {deltaLng}</label>
+	</div>
+	<div class="m-2 select-none">
+		<input id="delta-lat" type="range" min="1" max="11" bind:value={deltaLat} />
+		<label for="delta-lat">緯度の幅: {deltaLat}</label>
+	</div>
+</dialog>
 
 <div class="grid h-screen place-items-center">
 	<main
@@ -238,6 +244,25 @@
 	}
 
 	#paper-background {
+		background-color: #fdfdfb;
+		background-image:
+			repeating-linear-gradient(
+				0deg,
+				rgba(0, 0, 0, 0.02) 0px,
+				rgba(0, 0, 0, 0.02) 1px,
+				transparent 1px,
+				transparent 4px
+			),
+			repeating-linear-gradient(
+				90deg,
+				rgba(0, 0, 0, 0.01) 0px,
+				rgba(0, 0, 0, 0.01) 1px,
+				transparent 1px,
+				transparent 4px
+			);
+	}
+
+	#menu {
 		background-color: #fdfdfb;
 		background-image:
 			repeating-linear-gradient(
