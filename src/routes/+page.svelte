@@ -101,27 +101,34 @@
 </svelte:head>
 
 <button
-	class="absolute right-1 z-5 rounded p-1 hover:bg-gray-400 hover:opacity-50"
+	class="absolute right-1 z-5 rounded p-0.5 hover:bg-gray-400 hover:opacity-50"
 	onclick={() => dialog.showModal()}
 >
-	<div class="p-0.5 text-center text-2xl">☰</div>
+	<div class="text-center text-2xl">☰</div>
 </button>
 
-<div class="relative w-full">
-	<dialog bind:this={dialog} id="menu" class="absolute z-3 h-auto w-100 rounded shadow-gray-800">
-		<button onclick={() => dialog.close()}>
-			<div class="absolute right-5 rounded p-0.5 text-center text-2xl hover:bg-gray-200">×</div>
+<div class="relative h-full w-full">
+	<dialog
+		bind:this={dialog}
+		id="menu"
+		class="absolute z-3 h-auto w-100 rounded p-3 shadow-gray-800"
+	>
+		<button
+			class="absolute right-2 m-1 rounded p-0.5 text-center text-2xl hover:bg-gray-200"
+			onclick={() => dialog.close()}
+		>
+			<div class="text-center text-2xl">×</div>
 		</button>
 
-		<div>
+		<div class="m-2">
 			<input type="range" min="1" max={markerLabels.length} bind:value={markerCount} />
 			<label for="volume">マーカー数: {markerCount}</label>
 		</div>
-		<div>
+		<div class="m-2">
 			<input type="range" min="1" max="11" bind:value={deltaLng} />
 			<label for="volume">経度の幅: {deltaLng}</label>
 		</div>
-		<div>
+		<div class="m-2">
 			<input type="range" min="1" max="11" bind:value={deltaLat} />
 			<label for="volume">緯度の幅: {deltaLat}</label>
 		</div>
