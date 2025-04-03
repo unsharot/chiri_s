@@ -119,7 +119,7 @@
 		</form>
 
 		<div>
-			<input type="range" min="1" max="11" bind:value={markerCount} />
+			<input type="range" min="1" max={markerLabels.length} bind:value={markerCount} />
 			<label for="volume">マーカー数: {markerCount}</label>
 		</div>
 		<div>
