@@ -13,7 +13,6 @@
 	} from '$lib';
 	import HintCard from './HintCard.svelte';
 	import { Confetti } from 'svelte-confetti';
-	import Dialog from './Dialog.svelte';
 
 	let dialog: any = $state();
 
@@ -102,21 +101,17 @@
 </svelte:head>
 
 <button
-	class="absolute right-1 z-2 p-1"
-	onclick={() => {
-		dialog.showModal();
-	}}
+	class="absolute right-1 z-5 rounded p-1 hover:bg-gray-400 hover:opacity-50"
+	onclick={() => dialog.showModal()}
 >
-	<div class="z-2 rounded p-0.5 text-center text-2xl hover:bg-gray-400">☰</div>
+	<div class="p-0.5 text-center text-2xl">☰</div>
 </button>
 
 <div class="relative w-full">
-	<Dialog bind:dialog>
-		<form method="dialog">
-			<button onclick={() => {}}>
-				<div class="absolute right-5 rounded p-0.5 text-center text-2xl hover:bg-gray-200">×</div>
-			</button>
-		</form>
+	<dialog bind:this={dialog} id="menu" class="absolute z-3 h-auto w-100 rounded shadow-gray-800">
+		<button onclick={() => dialog.close()}>
+			<div class="absolute right-5 rounded p-0.5 text-center text-2xl hover:bg-gray-200">×</div>
+		</button>
 
 		<div>
 			<input type="range" min="1" max={markerLabels.length} bind:value={markerCount} />
@@ -130,7 +125,7 @@
 			<input type="range" min="1" max="11" bind:value={deltaLat} />
 			<label for="volume">緯度の幅: {deltaLat}</label>
 		</div>
-	</Dialog>
+	</dialog>
 </div>
 
 <div class="grid h-screen place-items-center">
@@ -238,6 +233,25 @@
 	}
 
 	#paper-background {
+		background-color: #fdfdfb;
+		background-image:
+			repeating-linear-gradient(
+				0deg,
+				rgba(0, 0, 0, 0.02) 0px,
+				rgba(0, 0, 0, 0.02) 1px,
+				transparent 1px,
+				transparent 4px
+			),
+			repeating-linear-gradient(
+				90deg,
+				rgba(0, 0, 0, 0.01) 0px,
+				rgba(0, 0, 0, 0.01) 1px,
+				transparent 1px,
+				transparent 4px
+			);
+	}
+
+	#menu {
 		background-color: #fdfdfb;
 		background-image:
 			repeating-linear-gradient(
