@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { name, imgDataURL } = $props();
+	let { name, imgDataURL, legendDataURL } = $props();
 
 	let open = $state(false);
 
@@ -20,6 +20,9 @@
 				alt="{name}のタイル画像"
 			/>
 		</button>
+		<div class="bg-red">
+			<img src={legendDataURL} alt="{name}の凡例" />
+		</div>
 		<div class="font-bold">{name}</div>
 	</div>
 {/if}
