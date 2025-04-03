@@ -120,17 +120,23 @@
 			<div class="text-center text-2xl select-none">×</div>
 		</button>
 
-		<div class="m-2">
-			<input type="range" min="1" max={markerLabels.length} bind:value={markerCount} />
-			<label for="volume">マーカー数: {markerCount}</label>
+		<div class="m-2 select-none">
+			<input
+				id="marker-count"
+				type="range"
+				min="1"
+				max={markerLabels.length}
+				bind:value={markerCount}
+			/>
+			<label for="marker-count">マーカー数: {markerCount}</label>
 		</div>
-		<div class="m-2">
-			<input type="range" min="1" max="11" bind:value={deltaLng} />
-			<label for="volume">経度の幅: {deltaLng}</label>
+		<div class="m-2 select-none">
+			<input id="delta-lng" type="range" min="1" max="11" bind:value={deltaLng} />
+			<label for="delta-lng">経度の幅: {deltaLng}</label>
 		</div>
-		<div class="m-2">
-			<input type="range" min="1" max="11" bind:value={deltaLat} />
-			<label for="volume">緯度の幅: {deltaLat}</label>
+		<div class="m-2 select-none">
+			<input id="delta-lat" type="range" min="1" max="11" bind:value={deltaLat} />
+			<label for="delta-lat">緯度の幅: {deltaLat}</label>
 		</div>
 	</dialog>
 </div>
