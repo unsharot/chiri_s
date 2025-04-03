@@ -80,6 +80,7 @@ type HintItem = {
 		colorMax: number;
 	};
 	imgDataURL: string;
+	legendDataURL: string;
 };
 
 const initHintItems: HintItem[] = [
@@ -93,7 +94,8 @@ const initHintItems: HintItem[] = [
 			colorMin: 0,
 			colorMax: 10000
 		},
-		imgDataURL: ''
+		imgDataURL: '',
+		legendDataURL: '',
 	},
 	{
 		name: '森林非森林',
@@ -105,7 +107,8 @@ const initHintItems: HintItem[] = [
 			colorMin: 0,
 			colorMax: 10000
 		},
-		imgDataURL: ''
+		imgDataURL: '',
+		legendDataURL: '',
 	},
 	{
 		name: '地表面温度',
@@ -117,7 +120,8 @@ const initHintItems: HintItem[] = [
 			colorMin: 223.1,
 			colorMax: 323.1,
 		},
-		imgDataURL: ''
+		imgDataURL: '',
+		legendDataURL: '',
 	},
 	{
 		name: '海面水温',
@@ -129,7 +133,8 @@ const initHintItems: HintItem[] = [
 			colorMin: 0.0,
 			colorMax: 40.0,
 		},
-		imgDataURL: ''
+		imgDataURL: '',
+		legendDataURL: '',
 	},
 	{
 		name: '降水量',
@@ -141,7 +146,8 @@ const initHintItems: HintItem[] = [
 			colorMin: 0.1,
 			colorMax: 10.0,
 		},
-		imgDataURL: ''
+		imgDataURL: '',
+		legendDataURL: '',
 	},
 	{
 		name: '植生指数',
@@ -153,7 +159,8 @@ const initHintItems: HintItem[] = [
 			colorMin: 0.0,
 			colorMax: 1.0,
 		},
-		imgDataURL: ''
+		imgDataURL: '',
+		legendDataURL: '',
 	},
 	{
 		name: '土壌水分量',
@@ -165,7 +172,8 @@ const initHintItems: HintItem[] = [
 			colorMin: 0.0,
 			colorMax: 30.0,
 		},
-		imgDataURL: ''
+		imgDataURL: '',
+		legendDataURL: '',
 	},
 	{
 		name: '海氷密接度',
@@ -177,7 +185,8 @@ const initHintItems: HintItem[] = [
 			colorMin: 0.0,
 			colorMax: 100.0,
 		},
-		imgDataURL: ''
+		imgDataURL: '',
+		legendDataURL: '',
 	},
 ] as const;
 
