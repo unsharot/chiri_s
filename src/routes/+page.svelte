@@ -119,7 +119,7 @@
 		</form>
 
 		<div>
-			<input type="range" min="1" max="11" bind:value={markerCount} />
+			<input type="range" min="1" max={markerLabels.length} bind:value={markerCount} />
 			<label for="volume">マーカー数: {markerCount}</label>
 		</div>
 		<div>
@@ -159,9 +159,10 @@
 				<div class="my-6 text-base tracking-tighter">
 					<span class="mr-1 font-bold tracking-[.5em]">第1問</span>
 					タロウさんは、衛星データの資料のラベルを誤って他のラベルと混ぜてしまい、どのラベルが付いていたか分からなくなってしまった。資料のラベルとして最も適切なものを地図上の
-					<button class="border-1 bg-white text-xl text-black">ア</button>
-					~<button class="border-1 bg-white text-xl text-black">エ</button>のうちから一つ選べ。(配点
-					100)
+					<button class="border-1 bg-white text-xl text-black">{markerLabels[0]}</button>
+					~<button class="border-1 bg-white text-xl text-black"
+						>{markerLabels[markerCount - 1]}</button
+					>のうちから一つ選べ。(配点 100)
 				</div>
 
 				<div class="h-[90vh] w-full lg:h-[70vh]">
