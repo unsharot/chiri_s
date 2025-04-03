@@ -104,7 +104,7 @@
 	class="absolute right-1 z-5 rounded p-0.5 hover:bg-gray-400 hover:opacity-50"
 	onclick={() => dialog.showModal()}
 >
-	<div class="text-center text-2xl">☰</div>
+	<div class="text-center text-2xl select-none">☰</div>
 </button>
 
 <div class="relative h-full w-full">
@@ -117,7 +117,7 @@
 			class="absolute right-2 m-1 rounded p-0.5 text-center text-2xl hover:bg-gray-200"
 			onclick={() => dialog.close()}
 		>
-			<div class="text-center text-2xl">×</div>
+			<div class="text-center text-2xl select-none">×</div>
 		</button>
 
 		<div class="m-2">
