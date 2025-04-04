@@ -216,12 +216,7 @@
 					<h2 class="text-2xl font-bold tracking-[.5em]">資料</h2>
 					<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 						{#each hintItems as hint}
-							<HintCard
-								name={hint.name}
-								imgDataURL={hint.imgDataURL}
-								legendDataURL={hint.legendDataURL}
-								date={hint.date}
-							/>
+							<HintCard {hint} />
 						{/each}
 					</div>
 				</section>
