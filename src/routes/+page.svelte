@@ -53,6 +53,7 @@
 		images.forEach((image, index) => {
 			hintItems[index].imgDataURL = image.getCanvas().toDataURL();
 			hintItems[index].legendDataURL = image.getLegend(720, 30, 9).toDataURL();
+			hintItems[index].date = image.getDate();
 		});
 	}
 
@@ -215,11 +216,7 @@
 					<h2 class="text-2xl font-bold tracking-[.5em]">資料</h2>
 					<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 						{#each hintItems as hint}
-							<HintCard
-								name={hint.name}
-								imgDataURL={hint.imgDataURL}
-								legendDataURL={hint.legendDataURL}
-							/>
+							<HintCard {hint} />
 						{/each}
 					</div>
 				</section>

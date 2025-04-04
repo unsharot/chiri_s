@@ -81,6 +81,7 @@ type HintItem = {
 	};
 	imgDataURL: string;
 	legendDataURL: string;
+	date: Date | null;
 };
 
 const initHintItems: HintItem[] = [
@@ -96,6 +97,7 @@ const initHintItems: HintItem[] = [
 		},
 		imgDataURL: '',
 		legendDataURL: '',
+		date: null,
 	},
 	{
 		name: '森林非森林',
@@ -109,6 +111,7 @@ const initHintItems: HintItem[] = [
 		},
 		imgDataURL: '',
 		legendDataURL: '',
+		date: null,
 	},
 	{
 		name: '地表面温度',
@@ -122,6 +125,7 @@ const initHintItems: HintItem[] = [
 		},
 		imgDataURL: '',
 		legendDataURL: '',
+		date: null,
 	},
 	{
 		name: '海面水温',
@@ -135,6 +139,7 @@ const initHintItems: HintItem[] = [
 		},
 		imgDataURL: '',
 		legendDataURL: '',
+		date: null,
 	},
 	{
 		name: '降水量',
@@ -148,6 +153,7 @@ const initHintItems: HintItem[] = [
 		},
 		imgDataURL: '',
 		legendDataURL: '',
+		date: null,
 	},
 	{
 		name: '植生指数',
@@ -161,6 +167,7 @@ const initHintItems: HintItem[] = [
 		},
 		imgDataURL: '',
 		legendDataURL: '',
+		date: null,
 	},
 	{
 		name: '土壌水分量',
@@ -174,6 +181,7 @@ const initHintItems: HintItem[] = [
 		},
 		imgDataURL: '',
 		legendDataURL: '',
+		date: null,
 	},
 	{
 		name: '海氷密接度',
@@ -187,6 +195,7 @@ const initHintItems: HintItem[] = [
 		},
 		imgDataURL: '',
 		legendDataURL: '',
+		date: null,
 	},
 ] as const;
 
