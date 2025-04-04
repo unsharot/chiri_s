@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { name, imgDataURL, legendDataURL } = $props();
+	let { name, imgDataURL, legendDataURL, date } = $props();
 
 	let open = $state(false);
 
@@ -23,7 +23,7 @@
 		<div class="bg-red">
 			<img src={legendDataURL} alt="{name}の凡例" />
 		</div>
-		<div class="font-bold">{name}</div>
+		<div class="font-bold">{name} ({date})</div>
 	</div>
 {/if}
 

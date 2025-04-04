@@ -53,6 +53,7 @@
 		images.forEach((image, index) => {
 			hintItems[index].imgDataURL = image.getCanvas().toDataURL();
 			hintItems[index].legendDataURL = image.getLegend(720, 30, 9).toDataURL();
+			hintItems[index].date = image.getDate();
 		});
 	}
 
@@ -219,6 +220,7 @@
 								name={hint.name}
 								imgDataURL={hint.imgDataURL}
 								legendDataURL={hint.legendDataURL}
+								date={hint.date}
 							/>
 						{/each}
 					</div>
