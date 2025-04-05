@@ -93,7 +93,7 @@ const initHintItems: HintItem[] = [
 			band: 'DSM',
 			colors: 'jet',
 			colorMin: 0,
-			colorMax: 10000
+			colorMax: 6000,
 		},
 		imgDataURL: '',
 		legendDataURL: '',
@@ -175,7 +175,7 @@ const initHintItems: HintItem[] = [
 			collection:
 				'https://s3.ap-northeast-1.wasabisys.com/je-pds/cog/v1/JAXA.G-Portal_GCOM-W.AMSR2_standard.L3-SMC.daytime.v3_global_monthly/collection.json',
 			band: 'SMC',
-			colors: 'jet',
+			colors: 'smc',
 			colorMin: 0.0,
 			colorMax: 30.0,
 		},
