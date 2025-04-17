@@ -5,7 +5,6 @@
 		getJaxaImage,
 		getRandomPoint,
 		isSamePoint,
-		calcDistance,
 		initHintItems,
 		markerLabels,
 		type HintItem,
