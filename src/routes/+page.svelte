@@ -10,9 +10,9 @@
 		type Point
 	} from '$lib';
 	import HintCard from './HintCard.svelte';
-	import { Confetti } from 'svelte-confetti';
 	import Map from './Map.svelte';
 	import Dialog from './Dialog.svelte';
+	import Confetti from './Confetti.svelte';
 
 	let dialog: any = $state();
 
@@ -146,13 +146,9 @@
 
 				<div class="h-[90vh] w-full lg:h-[70vh]">
 					<Map bind:selectedPoint {markerLabels} {points} {checkAnswer} />
-					{#if quizMode === 'result'}
-						{#if correct}
-							<div class="fixed bottom-[50%] left-[50%]">
-								<Confetti amount={100} x={[-2, 2]} y={[-2, 2]} />
-							</div>
-						{/if}
-					{/if}
+
+					<!-- 正解時の花吹雪 -->
+					<Confetti {quizMode} {correct} />
 				</div>
 			</section>
 
