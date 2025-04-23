@@ -13,6 +13,7 @@
 	import Map from './Map.svelte';
 	import Dialog from './Dialog.svelte';
 	import Confetti from './Confetti.svelte';
+	import ResultCard from './ResultCard.svelte';
 
 	let dialog: any = $state();
 
@@ -122,17 +123,9 @@
 				<div class="flex items-end gap-3">
 					<h1 class="text-3xl font-bold tracking-[.5em]">地理S</h1>
 					<a class="underline hover:no-underline" href="https://github.com/unsharot">unsharot</a>
-					{#if quizMode === 'result'}
-						{#if correct}
-							<div class="absolute right-0 rounded bg-green-500 p-0.5 text-center text-4xl">
-								正解
-							</div>
-						{:else}
-							<div class="absolute right-0 rounded bg-red-500 p-0.5 text-center text-4xl">
-								不正解
-							</div>
-						{/if}
-					{/if}
+
+					<!-- 正解・不正解表示 -->
+					<ResultCard {quizMode} {correct} />
 				</div>
 
 				<div class="my-6 text-base tracking-tighter">
