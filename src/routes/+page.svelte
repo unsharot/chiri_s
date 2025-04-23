@@ -143,7 +143,7 @@
 <div class="grid h-screen place-items-center">
 	<main
 		id="paper-background"
-		class="paper-background mx-6 my-6 flex flex-col gap-4 px-8 py-8 shadow-2xl"
+		class="paper-background mx-6 my-3 flex flex-col gap-4 px-6 py-6 shadow-2xl"
 	>
 		<div class="flex flex-col gap-6 lg:flex-row lg:gap-12">
 			<section id="left-page" class="relative w-full lg:basis-1/2">
