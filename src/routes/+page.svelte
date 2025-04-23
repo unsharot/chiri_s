@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { MapLibre, Marker } from 'svelte-maplibre-gl';
 	import {
 		getJaxaImage,
 		getRandomPoint,
@@ -12,6 +11,7 @@
 	} from '$lib';
 	import HintCard from './HintCard.svelte';
 	import { Confetti } from 'svelte-confetti';
+	import Map from './Map.svelte';
 
 	let dialog: any = $state();
 
@@ -173,33 +173,7 @@
 				</div>
 
 				<div class="h-[90vh] w-full lg:h-[70vh]">
-					<MapLibre
-						class="h-full"
-						style="https://tile.openstreetmap.jp/styles/openmaptiles/style.json"
-						zoom={-1}
-						center={[180, 0]}
-					>
-						{#each points as point, idx}
-							<Marker lnglat={[point.lng, point.lat]}>
-								{#snippet content()}
-									<button
-										class="h-12 w-12 border-3 text-2xl text-black hover:bg-black hover:text-white {isSamePoint(
-											selectedPoint,
-											point
-										)
-											? 'bg-teal-500'
-											: 'bg-white'}"
-										onclick={() => {
-											selectedPoint = point;
-											checkAnswer();
-										}}
-									>
-										{markerLabels[idx]}
-									</button>
-								{/snippet}</Marker
-							>
-						{/each}
-					</MapLibre>
+					<Map bind:selectedPoint {markerLabels} {points} {checkAnswer} />
 					{#if quizMode === 'result'}
 						{#if correct}
 							<div class="fixed bottom-[50%] left-[50%]">
