@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { MapLibre, Marker } from 'svelte-maplibre-gl';
 	import {
 		getJaxaImage,
 		getRandomPoint,
@@ -11,7 +10,10 @@
 		type Point
 	} from '$lib';
 	import HintCard from './HintCard.svelte';
-	import { Confetti } from 'svelte-confetti';
+	import Map from './Map.svelte';
+	import Dialog from './Dialog.svelte';
+	import Confetti from './Confetti.svelte';
+	import ResultCard from './ResultCard.svelte';
 
 	let dialog: any = $state();
 
@@ -108,37 +110,8 @@
 	<div class="text-center text-2xl select-none">☰</div>
 </button>
 
-<dialog
-	bind:this={dialog}
-	id="menu"
-	class="fixed z-3 min-h-screen w-100 rounded p-3 shadow-gray-800"
->
-	<button
-		class="absolute right-2 m-1 rounded p-0.5 text-center text-2xl hover:bg-gray-200"
-		onclick={() => dialog.close()}
-	>
-		<div class="text-center text-2xl select-none">×</div>
-	</button>
-
-	<div class="m-2 select-none">
-		<input
-			id="marker-count"
-			type="range"
-			min="1"
-			max={markerLabels.length}
-			bind:value={markerCount}
-		/>
-		<label for="marker-count">マーカー数: {markerCount}</label>
-	</div>
-	<div class="m-2 select-none">
-		<input id="delta-lng" type="range" min="1" max="11" bind:value={deltaLng} />
-		<label for="delta-lng">経度の幅: {deltaLng}</label>
-	</div>
-	<div class="m-2 select-none">
-		<input id="delta-lat" type="range" min="1" max="11" bind:value={deltaLat} />
-		<label for="delta-lat">緯度の幅: {deltaLat}</label>
-	</div>
-</dialog>
+<!-- 設定 -->
+<Dialog bind:dialog {markerLabels} bind:markerCount bind:deltaLng bind:deltaLat />
 
 <div class="grid h-screen place-items-center">
 	<main
@@ -150,17 +123,9 @@
 				<div class="flex items-end gap-3">
 					<h1 class="text-3xl font-bold tracking-[.5em]">地理S</h1>
 					<a class="underline hover:no-underline" href="https://github.com/unsharot">unsharot</a>
-					{#if quizMode === 'result'}
-						{#if correct}
-							<div class="absolute right-0 rounded bg-green-500 p-0.5 text-center text-4xl">
-								正解
-							</div>
-						{:else}
-							<div class="absolute right-0 rounded bg-red-500 p-0.5 text-center text-4xl">
-								不正解
-							</div>
-						{/if}
-					{/if}
+
+					<!-- 正解・不正解表示 -->
+					<ResultCard {quizMode} {correct} />
 				</div>
 
 				<div class="my-6 text-base tracking-tighter">
@@ -173,40 +138,10 @@
 				</div>
 
 				<div class="h-[90vh] w-full lg:h-[70vh]">
-					<MapLibre
-						class="h-full"
-						style="https://tile.openstreetmap.jp/styles/openmaptiles/style.json"
-						zoom={-1}
-						center={[180, 0]}
-					>
-						{#each points as point, idx}
-							<Marker lnglat={[point.lng, point.lat]}>
-								{#snippet content()}
-									<button
-										class="h-12 w-12 border-3 text-2xl text-black hover:bg-black hover:text-white {isSamePoint(
-											selectedPoint,
-											point
-										)
-											? 'bg-teal-500'
-											: 'bg-white'}"
-										onclick={() => {
-											selectedPoint = point;
-											checkAnswer();
-										}}
-									>
-										{markerLabels[idx]}
-									</button>
-								{/snippet}</Marker
-							>
-						{/each}
-					</MapLibre>
-					{#if quizMode === 'result'}
-						{#if correct}
-							<div class="fixed bottom-[50%] left-[50%]">
-								<Confetti amount={100} x={[-2, 2]} y={[-2, 2]} />
-							</div>
-						{/if}
-					{/if}
+					<Map bind:selectedPoint {markerLabels} {points} {checkAnswer} />
+
+					<!-- 正解時の花吹雪 -->
+					<Confetti {quizMode} {correct} />
 				</div>
 			</section>
 
@@ -245,25 +180,6 @@
 	}
 
 	#paper-background {
-		background-color: #fdfdfb;
-		background-image:
-			repeating-linear-gradient(
-				0deg,
-				rgba(0, 0, 0, 0.02) 0px,
-				rgba(0, 0, 0, 0.02) 1px,
-				transparent 1px,
-				transparent 4px
-			),
-			repeating-linear-gradient(
-				90deg,
-				rgba(0, 0, 0, 0.01) 0px,
-				rgba(0, 0, 0, 0.01) 1px,
-				transparent 1px,
-				transparent 4px
-			);
-	}
-
-	#menu {
 		background-color: #fdfdfb;
 		background-image:
 			repeating-linear-gradient(
