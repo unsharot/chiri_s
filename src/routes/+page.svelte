@@ -15,7 +15,7 @@
 	import Confetti from './Confetti.svelte';
 	import ResultCard from './ResultCard.svelte';
 
-	let dialog: any = $state();
+	let dialog: HTMLDialogElement | undefined = $state();
 
 	let quizMode: 'playing' | 'result' = $state('playing');
 	let correct = $state(false);
@@ -105,7 +105,7 @@
 
 <button
 	class="absolute right-1 z-5 rounded p-0.5 hover:bg-gray-400 hover:opacity-50"
-	onclick={() => dialog.showModal()}
+	onclick={() => dialog?.showModal()}
 >
 	<div class="text-center text-2xl select-none">☰</div>
 </button>
